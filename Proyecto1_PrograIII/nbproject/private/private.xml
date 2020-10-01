@@ -2,31 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/vista/VistaUsuarios.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/modelo/Interfaces/Report.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/modelo/Interfaces/Identificator.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/modelo/Vuelo.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/modelo/Reservacion.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/vista/VistaVuelos.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/vista/VistaMenuPricipal.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/vista/VistaAerolineas.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/proyecto1_prograiii/Proyecto1_PrograIII.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/controlador/Eventos.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/vista/VistaLogin.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/modelo/Persistencia.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/modelo/Interfaces/Consultas.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/modelo/Aerolinea.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/controlador/Login.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/modelo/Interfaces/Resevaciones.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/vista/VistaConsultas.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/modelo/Persona.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/vista/VistaReportes.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/modelo/Interfaces/Fecha.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/modelo/Lugar.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/controlador/Validaciones.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/modelo/Reporte.java</file>
-            <file>file:/Users/oscardanielquesadacalderon/Desktop/Escritrio/Programación%20III/Proyecto_Progra_III/Proyecto1_PrograIII/src/com/progra/una/vista/VistaResevaciones.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
