@@ -6,10 +6,13 @@
 package com.progra.una.vista;
 
 
+import com.progra.una.controlador.ControladorPanelButton;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JDesktopPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -18,13 +21,14 @@ import javax.swing.JDesktopPane;
 
 public class JPanelButtonsAdmin extends javax.swing.JPanel {
 
-    
+    private ControladorPanelButton c;
+
     /**
      * Creates new form JPanelButtons
      */
     public JPanelButtonsAdmin(PrincipalRightPanel p) {
         initComponents();
-       
+        c = new ControladorPanelButton(this,p);
     }
 
     /**
@@ -268,13 +272,13 @@ public class JPanelButtonsAdmin extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap()
                 .addComponent(PanelTitles, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(PanelEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         PanelEdit.getAccessibleContext().setAccessibleName("");
@@ -352,5 +356,33 @@ public class JPanelButtonsAdmin extends javax.swing.JPanel {
     private javax.swing.JLabel lbPanelModi;
     private javax.swing.JLabel lbTitulo;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnAdminAerolinea() {
+        return btnAdminAerolinea;
+    }
+
+    public JButton getBtnAdminReserv() {
+        return btnAdminReserv;
+    }
+
+    public JButton getBtnAdminUser() {
+        return btnAdminUser;
+    }
+
+    public JButton getBtnAdminVuelos() {
+        return btnAdminVuelos;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public JButton getBtnModificar() {
+        return btnModificar;
+    }
+
+    public JButton getBtnNuevo() {
+        return btnNuevo;
+    }
 
 }

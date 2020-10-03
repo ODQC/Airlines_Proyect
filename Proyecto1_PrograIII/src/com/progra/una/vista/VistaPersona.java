@@ -5,10 +5,16 @@
  */
 package com.progra.una.vista;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author oscardanielquesadacalderon
  */
 public class VistaPersona {
+
+    public VistaPersona(JPanel principal) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -18,6 +18,9 @@ public class Persistencia {
     private ArrayList<Reservacion> ListaReservaciones;
     private ArrayList<Reporte> ListaReportes;
 
+    public Persistencia() {
+    }
+
     public ArrayList<Persona> getListaPersonas() {
         return ListaPersonas;
     }

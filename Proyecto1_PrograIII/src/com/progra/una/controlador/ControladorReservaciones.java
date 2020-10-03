@@ -12,11 +12,11 @@ import com.progra.una.vista.VistaReservaciones;
  *
  * @author oscardanielquesadacalderon
  */
-public class ControladorResevaciones {
+public class ControladorReservaciones {
     Reservacion m;
     VistaReservaciones r;
 
-    public ControladorResevaciones(Reservacion m, VistaReservaciones r) {
+    public ControladorReservaciones(Reservacion m, VistaReservaciones r) {
         this.m = m;
         this.r = r;
     }
