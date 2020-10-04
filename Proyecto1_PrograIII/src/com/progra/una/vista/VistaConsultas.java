@@ -111,6 +111,7 @@ public class VistaConsultas  extends javax.swing.JPanel{
             btnSiguiente.setMaximumSize(new Dimension(100, 32));
             GridInferior.gridx = 2; //Posición eje x
             GridInferior.gridy = 0; //Posición eje y
+            
             panelInferior.add(btnSiguiente, GridInferior);
 
             btnCancelar = new JButton("Cancelar");

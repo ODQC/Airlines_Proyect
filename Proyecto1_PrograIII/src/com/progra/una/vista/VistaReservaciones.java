@@ -44,12 +44,11 @@ public class VistaReservaciones extends javax.swing.JPanel {
     private JComboBox<String> cmbAerolineas;
 
     public VistaReservaciones(JPanel principal) {
+        this.InitComponents();
         this.principal = principal;
         this.c = new ControladorReservaciones(m, this);
         this.principal = principal;
         principal.setLayout(new CardLayout());
-        this.InitComponents();
-        
         this.Iniciar();
     }
 
@@ -191,6 +190,10 @@ public class VistaReservaciones extends javax.swing.JPanel {
 
     public JButton getBtnGenerarCodigo() {
         return btnGenerarCodigo;
+    }
+
+    public JPanel getPrincipal() {
+        return principal;
     }
 
 }

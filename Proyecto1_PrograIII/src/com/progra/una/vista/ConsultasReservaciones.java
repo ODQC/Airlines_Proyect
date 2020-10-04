@@ -5,6 +5,9 @@
  */
 package com.progra.una.vista;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author oscardanielquesadacalderon
@@ -14,8 +17,12 @@ public class ConsultasReservaciones extends javax.swing.JPanel {
     /**
      * Creates new form VistaReportes
      */
-    public ConsultasReservaciones() {
+    private JPanel panelPrincipal;
+    public ConsultasReservaciones(JPanel panelPrincipal) {
+        this.panelPrincipal = panelPrincipal;
+        this.setLayout(new CardLayout());
         initComponents();
+ 
     }
 
     /**
@@ -27,129 +34,158 @@ public class ConsultasReservaciones extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
+        panelSuperior = new javax.swing.JPanel();
+        jlTitlePanel = new javax.swing.JLabel();
+        PanelInferior = new javax.swing.JPanel();
+        btnBuscar = new javax.swing.JButton();
+        btnAtras = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        panelCentral = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbAirlines = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(65, 81, 109));
         setMaximumSize(new java.awt.Dimension(900, 700));
         setMinimumSize(new java.awt.Dimension(900, 700));
         setPreferredSize(new java.awt.Dimension(900, 700));
         setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Registro de Reportes");
+        panelSuperior.setBackground(new java.awt.Color(35, 49, 67));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jlTitlePanel.setBackground(javax.swing.UIManager.getDefaults().getColor("TabbedPane.selected"));
+        jlTitlePanel.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+        jlTitlePanel.setForeground(java.awt.SystemColor.activeCaptionBorder);
+        jlTitlePanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlTitlePanel.setText("Registro de Reservaciones");
+
+        javax.swing.GroupLayout panelSuperiorLayout = new javax.swing.GroupLayout(panelSuperior);
+        panelSuperior.setLayout(panelSuperiorLayout);
+        panelSuperiorLayout.setHorizontalGroup(
+            panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSuperiorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
+                .addComponent(jlTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelSuperiorLayout.setVerticalGroup(
+            panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSuperiorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addComponent(jlTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        add(panelSuperior, java.awt.BorderLayout.PAGE_START);
 
-        jButton1.setText("jButton1");
+        PanelInferior.setBackground(new java.awt.Color(65, 81, 109));
+        PanelInferior.setMaximumSize(new java.awt.Dimension(900, 50));
+        PanelInferior.setMinimumSize(new java.awt.Dimension(900, 50));
+        PanelInferior.setPreferredSize(new java.awt.Dimension(900, 50));
 
-        jButton2.setText("jButton2");
+        btnBuscar.setText("Buscar");
+        btnBuscar.setMaximumSize(new java.awt.Dimension(84, 32));
+        btnBuscar.setMinimumSize(new java.awt.Dimension(84, 32));
+        btnBuscar.setPreferredSize(new java.awt.Dimension(84, 32));
 
-        jButton3.setText("jButton3");
+        btnAtras.setText("Atras");
+        btnAtras.setMaximumSize(new java.awt.Dimension(84, 32));
+        btnAtras.setMinimumSize(new java.awt.Dimension(84, 32));
+        btnAtras.setPreferredSize(new java.awt.Dimension(84, 32));
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(534, Short.MAX_VALUE)
-                .addComponent(jButton3)
+        btnCancelar.setText("Cancelar");
+
+        javax.swing.GroupLayout PanelInferiorLayout = new javax.swing.GroupLayout(PanelInferior);
+        PanelInferior.setLayout(PanelInferiorLayout);
+        PanelInferiorLayout.setHorizontalGroup(
+            PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInferiorLayout.createSequentialGroup()
+                .addContainerGap(531, Short.MAX_VALUE)
+                .addComponent(btnCancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(99, 99, 99))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(41, Short.MAX_VALUE))
+        PanelInferiorLayout.setVerticalGroup(
+            PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelInferiorLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        add(jPanel3, java.awt.BorderLayout.PAGE_END);
+        add(PanelInferior, java.awt.BorderLayout.PAGE_END);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        panelCentral.setBackground(new java.awt.Color(65, 81, 109));
+
+        tbAirlines.setBackground(new java.awt.Color(65, 70, 72));
+        tbAirlines.setForeground(new java.awt.Color(65, 70, 72));
+        tbAirlines.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Id Reporte", "Fecha ", "Descripción"
+                "Id Aerolinea", "Nombre Aerolinea"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(50);
+        jScrollPane1.setViewportView(tbAirlines);
+        if (tbAirlines.getColumnModel().getColumnCount() > 0) {
+            tbAirlines.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tbAirlines.getColumnModel().getColumn(1).setResizable(false);
+            tbAirlines.getColumnModel().getColumn(1).setPreferredWidth(50);
         }
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelCentralLayout = new javax.swing.GroupLayout(panelCentral);
+        panelCentral.setLayout(panelCentralLayout);
+        panelCentralLayout.setHorizontalGroup(
+            panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCentralLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+        panelCentralLayout.setVerticalGroup(
+            panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
         );
 
-        add(jPanel4, java.awt.BorderLayout.CENTER);
+        add(panelCentral, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel PanelInferior;
+    private javax.swing.JButton btnAtras;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jlTitlePanel;
+    private javax.swing.JPanel panelCentral;
+    private javax.swing.JPanel panelSuperior;
+    private javax.swing.JTable tbAirlines;
     // End of variables declaration//GEN-END:variables
 }

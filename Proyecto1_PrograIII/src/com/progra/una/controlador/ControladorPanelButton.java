@@ -64,10 +64,10 @@ public class ControladorPanelButton {
         this.v.getBtnAdminUser().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                vP  = new VistaPersona(principal);
-//                principal.add("vistaPersona", vP);
-//                CardLayout card = (CardLayout) principal.getLayout();
-//                card.next(principal);
+                vP  = new VistaPersona(principal);
+                principal.add("vistaPersona", vP);
+                CardLayout card = (CardLayout) principal.getLayout();
+                card.next(principal);
             }
         });
     }

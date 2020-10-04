@@ -39,7 +39,7 @@ public class VistaAerolineas extends javax.swing.JPanel {
     private ControladorAerolinea c;
    
     private JButton btnCancelar;
-    private JButton btnSiguiente;
+    private JButton  btnVerAero ;
     private JButton btnGenerarCodigo;
     private JTextField txtNombreAerolinea;
     private JTextField txtCodigoAerolinea;
@@ -47,10 +47,11 @@ public class VistaAerolineas extends javax.swing.JPanel {
 
     public VistaAerolineas(JPanel panelPrincipal) {
         this.m = new Aerolinea();
+        this.initCompo();
         this.c = new ControladorAerolinea(m, this);
         this.panelPrincipal = panelPrincipal;
         panelPrincipal.setLayout(new CardLayout());
-        this.initCompo();
+        
         this.Iniciar();
 
     }
@@ -113,6 +114,7 @@ public class VistaAerolineas extends javax.swing.JPanel {
             panel1.add(txtNombreAerolinea, CentralGrid);
 
             txtCodigoAerolinea = new JTextField(20);
+            txtCodigoAerolinea.setEditable(false);
             txtCodigoAerolinea.setPreferredSize(new Dimension(300, 32));
             txtCodigoAerolinea.setMinimumSize(new Dimension(300, 32));
             txtCodigoAerolinea.setMaximumSize(new Dimension(300, 32));
@@ -125,14 +127,18 @@ public class VistaAerolineas extends javax.swing.JPanel {
             lbNombreAerolinea.setForeground(new java.awt.Color(243, 243, 243));
             CentralGrid.gridx = 0;
             CentralGrid.gridy = 0;
-
             panel1.add(lbNombreAerolinea, CentralGrid);
+             
+            JLabel lbGenereCod = new JLabel("Haga click en Generar código de la aerolinea:", JLabel.CENTER);
+            lbGenereCod.setForeground(new java.awt.Color(243, 243, 243));
+            CentralGrid.gridx = 1;
+            CentralGrid.gridy = 2;
+            panel1.add(lbGenereCod, CentralGrid);
 
-            JLabel lbCodigoAerolinea = new JLabel("Haga click en Generar código de la aerolinea :", JLabel.CENTER);
+            JLabel lbCodigoAerolinea = new JLabel("Código de Aerolinea:", JLabel.CENTER);
             lbCodigoAerolinea.setForeground(new java.awt.Color(243, 243, 243));
             CentralGrid.gridx = 0;
             CentralGrid.gridy = 2;
-
             panel1.add(lbCodigoAerolinea, CentralGrid);
 
             btnGenerarCodigo = new JButton("Generar código");
@@ -143,8 +149,6 @@ public class VistaAerolineas extends javax.swing.JPanel {
             CentralGrid.gridx = 1;
             CentralGrid.gridy = 3;
             panel1.add(btnGenerarCodigo, CentralGrid);
-            
-           
 
             GridBagConstraints GridInferior = new GridBagConstraints();
             GridInferior.gridx = 0; //Posición eje x
@@ -158,13 +162,13 @@ public class VistaAerolineas extends javax.swing.JPanel {
             GridInferior.gridy = 0; //Posición eje y
             panelInferior.add(btnCancelar, GridInferior);
 
-            btnSiguiente = new JButton("Ver Aerolineas");
-            btnSiguiente.setPreferredSize(new Dimension(200, 40));
-            btnSiguiente.setMinimumSize(new Dimension(200, 40));
-            btnSiguiente.setMaximumSize(new Dimension(200, 40));
+            btnVerAero = new JButton("Ver Aerolineas");
+            btnVerAero.setPreferredSize(new Dimension(200, 40));
+            btnVerAero.setMinimumSize(new Dimension(200, 40));
+            btnVerAero.setMaximumSize(new Dimension(200, 40));
             GridInferior.gridx = 2; //Posición eje x
             GridInferior.gridy = 0; //Posición eje y
-            panelInferior.add(btnSiguiente, GridInferior);
+            panelInferior.add(btnVerAero, GridInferior);
 
             
 
@@ -192,8 +196,8 @@ public class VistaAerolineas extends javax.swing.JPanel {
         return btnCancelar;
     }
 
-    public JButton getBtnSiguiente() {
-        return btnSiguiente;
+    public JButton getBtnVerAero () {
+        return  btnVerAero ;
     }
 
     public JButton getBtnGenerarCodigo() {
@@ -206,6 +210,10 @@ public class VistaAerolineas extends javax.swing.JPanel {
 
     public JTextField getTxtCodigoAerolinea() {
         return txtCodigoAerolinea;
+    }
+
+    public JPanel getPanelPrincipal() {
+        return panelPrincipal;
     }
     
 }

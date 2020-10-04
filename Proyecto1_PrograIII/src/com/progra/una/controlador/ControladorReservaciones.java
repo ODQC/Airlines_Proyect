@@ -6,7 +6,12 @@
 package com.progra.una.controlador;
 
 import com.progra.una.modelo.Reservacion;
+import com.progra.una.vista.ConsultasVuelos;
+import com.progra.una.vista.VistaLugares;
 import com.progra.una.vista.VistaReservaciones;
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -14,10 +19,24 @@ import com.progra.una.vista.VistaReservaciones;
  */
 public class ControladorReservaciones {
     Reservacion m;
-    VistaReservaciones r;
+    VistaReservaciones v;
+    VistaLugares vL;
 
     public ControladorReservaciones(Reservacion m, VistaReservaciones r) {
         this.m = m;
-        this.r = r;
+        this.v = r;
+        this.initListeners();
+    }
+    public void initListeners() {
+        this.v.getBtnSiguiente().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //principal.removeAll();
+                vL = new  VistaLugares(v.getPrincipal());
+                v.getPrincipal().add("aerolineaForm", vL);
+                CardLayout card = (CardLayout) v.getPrincipal().getLayout();
+                card.next(v.getPrincipal());
+            }
+        });
     }
 }

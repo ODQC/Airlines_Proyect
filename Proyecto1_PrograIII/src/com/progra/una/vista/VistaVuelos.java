@@ -51,9 +51,8 @@ public class VistaVuelos extends javax.swing.JPanel{
 
     public VistaVuelos(JPanel principal) {
         this.principal = principal;
-        this.c = new ControladorVuelo(m,this);
-        
         this.InitComponents();
+        this.c = new ControladorVuelo(m,this);
         this.Iniciar();
     }
     public void Iniciar(){
@@ -156,6 +155,7 @@ public class VistaVuelos extends javax.swing.JPanel{
             txtidFly.setPreferredSize(new Dimension(300, 32));
             txtidFly.setMinimumSize(new Dimension(300, 32));
             txtidFly.setMaximumSize(new Dimension(300, 32));
+            txtidFly.setEditable(false);
             CentralGrid.gridx = 0; //Posición eje x
             CentralGrid.gridy = 1; //Posición eje y
             panelCentral.add(txtidFly, CentralGrid);
@@ -281,5 +281,16 @@ public class VistaVuelos extends javax.swing.JPanel{
         return btnVuelos;
     }
 
-     
+    public JPanel getPrincipal() {
+        return principal;
+    }
+
+    public JButton getBtnGenerarCodigo() {
+        return btnGenerarCodigo;
+    }
+
+    public JTextField getTxtidFly() {
+        return txtidFly;
+    }
+    
 }
