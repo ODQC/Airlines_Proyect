@@ -7,6 +7,7 @@ package com.progra.una.vista;
 
 import com.progra.una.controlador.ControladorAerolinea;
 import com.progra.una.modelo.Aerolinea;
+import com.progra.una.modelo.Persistencia;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -15,14 +16,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -37,21 +31,21 @@ public class VistaAerolineas extends javax.swing.JPanel {
     private Container con;
     private Aerolinea m;
     private ControladorAerolinea c;
-   
+    private Persistencia per;
     private JButton btnCancelar;
-    private JButton  btnVerAero ;
+    private JButton btnVerAero ;
     private JButton btnGenerarCodigo;
     private JTextField txtNombreAerolinea;
     private JTextField txtCodigoAerolinea;
 
 
-    public VistaAerolineas(JPanel panelPrincipal) {
+    public VistaAerolineas(JPanel panelPrincipal,Persistencia per) {
+        this.per =per;
         this.m = new Aerolinea();
         this.initCompo();
         this.c = new ControladorAerolinea(m, this);
         this.panelPrincipal = panelPrincipal;
         panelPrincipal.setLayout(new CardLayout());
-        
         this.Iniciar();
 
     }
@@ -214,6 +208,14 @@ public class VistaAerolineas extends javax.swing.JPanel {
 
     public JPanel getPanelPrincipal() {
         return panelPrincipal;
+    }
+
+    public Persistencia getPer() {
+        return per;
+    }
+
+    public ControladorAerolinea getControlerA() {
+        return c;
     }
     
 }

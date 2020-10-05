@@ -20,7 +20,9 @@ public class Vuelo extends  Aerolinea{
     private String capacity;
     private String stateFly;
 
-    public Vuelo(String idFly, String source, String destination, String takeOffDate, String arrivalDate, String capacity, String stateFly, String idAirline, String nameAirline) {
+    public Vuelo(String idFly, String source, String destination, String takeOffDate, 
+            String arrivalDate, String capacity, String stateFly, String idAirline, 
+            String nameAirline) {
         super(idAirline, nameAirline);
         this.idFly = idFly;
         this.source = source;
@@ -79,11 +81,11 @@ public class Vuelo extends  Aerolinea{
         this.capacity = capacity;
     }
 
-    public String getStateFly() {
+    public String getStatusFly() {
         return stateFly;
     }
 
-    public void setStateFly(String stateFly) {
+    public void setStatusFly(String stateFly) {
         this.stateFly = stateFly;
     }
 

@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.progra.una.controlador;
-
-import com.progra.una.modelo.Interfaces.Identificator;
+package com.progra.una.modelo.Interfaces;
 
 /**
  *
  * @author oscardanielquesadacalderon
  */
-public class Identificador implements Identificator {
-    public void getID(){
-    this.CodeGenerator(0);
-    }
+public interface ShowObjects {
+      public void ShowObjects(); 
 }

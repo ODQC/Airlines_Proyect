@@ -7,6 +7,7 @@ package com.progra.una.vista;
 
 
 import com.progra.una.controlador.ControladorPanelButton;
+import com.progra.una.modelo.Persistencia;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,13 +23,16 @@ import javax.swing.JPanel;
 public class JPanelButtonsAdmin extends javax.swing.JPanel {
 
     private ControladorPanelButton c;
+    private Persistencia per;
 
     /**
      * Creates new form JPanelButtons
      */
-    public JPanelButtonsAdmin(PrincipalRightPanel p) {
+    
+    public JPanelButtonsAdmin(PrincipalRightPanel p,Persistencia per) {
         initComponents();
-        c = new ControladorPanelButton(this,p);
+        this.per =per;
+        c = new ControladorPanelButton(this,per,p);
     }
 
     /**

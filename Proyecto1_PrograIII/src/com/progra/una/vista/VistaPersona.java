@@ -6,6 +6,7 @@
 package com.progra.una.vista;
 
 import com.progra.una.controlador.ControladorPersona;
+import com.progra.una.modelo.Persistencia;
 import com.progra.una.modelo.Persona;
 import java.awt.Color;
 import java.awt.Container;
@@ -45,7 +46,7 @@ public class VistaPersona extends javax.swing.JPanel {
     private JLabel lblApellido2;
     
     
-    public VistaPersona(JPanel principal){
+    public VistaPersona(JPanel principal,Persistencia per){
         this.InitComponents();
         this.principal = principal;
         this.c = new ControladorPersona(p,this);
@@ -131,6 +132,11 @@ public class VistaPersona extends javax.swing.JPanel {
         }    
             
     }
+
+    public ControladorPersona getControlerP() {
+        return c;
+    }
+
 }
 
  

@@ -35,14 +35,7 @@ public class PrincipalRightPanel extends javax.swing.JPanel {
         this.setVisible(true);
     }
     
-    public void ShowAirlinesPanel(ActionEvent e) {
-        VistaAerolineas aerolineaForm = new VistaAerolineas(this);
-        this.remove(p1);
-        this.add("aerolineaForm", aerolineaForm);
-        CardLayout card = (CardLayout) this.getLayout();
-        card.next(this);
-        //card.show(this, "aerolineaForm");
-    }
+    
 
    
 }

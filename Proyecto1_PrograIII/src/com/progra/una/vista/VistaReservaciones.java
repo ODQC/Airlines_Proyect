@@ -43,8 +43,10 @@ public class VistaReservaciones extends javax.swing.JPanel {
     private JLabel lbSelectFly;
     private JComboBox<String> cmbAerolineas;
 
-    public VistaReservaciones(JPanel principal) {
+   
+    public VistaReservaciones(JPanel principal,Persistencia per) {
         this.InitComponents();
+        this.per = per;
         this.principal = principal;
         this.c = new ControladorReservaciones(m, this);
         this.principal = principal;
@@ -56,14 +58,22 @@ public class VistaReservaciones extends javax.swing.JPanel {
         this.setVisible(true);
     }
 
-    public void FillCombos() {
-
+   public void FillCombo(){
+    
+    try {
        if(per.getListaAerolineas().isEmpty()){
-             JOptionPane.showMessageDialog(null, "No hay Aerolineas para seleccionar","Lista Vacia", JOptionPane.INFORMATION_MESSAGE);
+           JOptionPane.showMessageDialog(null, "\nNo hay  Aerolineas agreagadas", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
        }else{
-                per.getListaAerolineas().forEach(p -> cmbAerolineas.addItem(p.getNameAirline()));
+           per.getListaAerolineas().forEach(p ->{cmbAerolineas.addItem(p.getNameAirline());});
+       }
+       
+         } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, ex + " " + "\nNo hay  elementos que mostrar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception e) {
+            System.err.println(e);
         }
     }
+    
     public void InitComponents() {
         try {
             this.per = new Persistencia();
@@ -118,6 +128,7 @@ public class VistaReservaciones extends javax.swing.JPanel {
             CentralGrid.gridy = 0; //Posición eje y
             panelCentral.add(cmbAerolineas, CentralGrid);
             cmbAerolineas.addItem("Seleccional");
+            this.FillCombo();
           
             lbSelectFly = new JLabel("Seleccione el vuelo:", JLabel.CENTER);
             lbSelectFly.setForeground(new java.awt.Color(243, 243, 243));
@@ -196,4 +207,11 @@ public class VistaReservaciones extends javax.swing.JPanel {
         return principal;
     }
 
+    public Persistencia getPer() {
+        return per;
+    }
+
+    public ControladorReservaciones getControlerR() {
+        return c;
+    }
 }

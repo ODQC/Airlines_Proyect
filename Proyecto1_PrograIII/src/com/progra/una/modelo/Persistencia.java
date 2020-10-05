@@ -19,6 +19,11 @@ public class Persistencia {
     private ArrayList<Reporte> ListaReportes;
 
     public Persistencia() {
+        this.ListaAerolineas = new ArrayList();
+        this.ListaPersonas = new ArrayList();
+        this.ListaReportes = new ArrayList();
+        this.ListaReservaciones = new ArrayList();
+        this.ListaVuelos = new ArrayList();
     }
 
     public ArrayList<Persona> getListaPersonas() {

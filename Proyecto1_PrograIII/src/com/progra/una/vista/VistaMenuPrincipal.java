@@ -6,6 +6,7 @@
 package com.progra.una.vista;
 
 import com.progra.una.controlador.ControladorPanelButton;
+import com.progra.una.modelo.Persistencia;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -35,15 +36,15 @@ public class VistaMenuPrincipal extends JFrame {
 
     private JPanel Rpanel;
     private JPanel Lpanel;
-
-    public VistaMenuPrincipal() {
+    private JPanelButtonsAdmin panelButtons;
+    private Persistencia per;
+    public VistaMenuPrincipal(Persistencia p) {
+        this.per = p;
         this.setSize(1200, 700);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setBackground(new Color(35, 49, 67));
-        //Debe estar acá para que sean visibles los componentes
-        //agregados
         this.InitComponents(this.getContentPane());
     }
 
@@ -64,7 +65,7 @@ public class VistaMenuPrincipal extends JFrame {
 
         //Se crea panel Central
         PrincipalRightPanel principalR = new PrincipalRightPanel();
-        JPanelButtonsAdmin panelButtons = new JPanelButtonsAdmin(principalR);
+        panelButtons = new JPanelButtonsAdmin(principalR,per);
 
         con.setLayout(new BorderLayout());
         

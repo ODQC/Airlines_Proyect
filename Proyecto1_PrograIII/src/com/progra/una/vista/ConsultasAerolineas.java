@@ -5,6 +5,7 @@
  */
 package com.progra.una.vista;
 
+import com.progra.una.modelo.Persistencia;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -18,7 +19,7 @@ public class ConsultasAerolineas extends javax.swing.JPanel {
      * Creates new form VistaReportes
      */
     private JPanel panelPrincipal;
-    public ConsultasAerolineas(JPanel panelPrincipal) {
+    public ConsultasAerolineas(JPanel panelPrincipal,Persistencia per) {
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();

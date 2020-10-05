@@ -9,6 +9,7 @@ import com.progra.una.controlador.ControladorAerolinea;
 import com.progra.una.controlador.ControladorLugar;
 import com.progra.una.modelo.Aerolinea;
 import com.progra.una.modelo.Lugar;
+import com.progra.una.modelo.Persistencia;
 import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -26,7 +27,8 @@ public class VistaLugares extends javax.swing.JPanel {
     private ControladorLugar c;
     private JPanel panelPrincipal;
     private Lugar m;
-    public VistaLugares(JPanel panelPrincipal) {
+    
+    public VistaLugares(JPanel panelPrincipal,Persistencia per) {
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();
@@ -45,7 +47,7 @@ public class VistaLugares extends javax.swing.JPanel {
         panelSuperior = new javax.swing.JPanel();
         jlTitlePanel = new javax.swing.JLabel();
         PanelInferior = new javax.swing.JPanel();
-        btnBuscar = new javax.swing.JButton();
+        btnReservar = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         panelCentral = new javax.swing.JPanel();
@@ -194,10 +196,10 @@ public class VistaLugares extends javax.swing.JPanel {
         PanelInferior.setMinimumSize(new java.awt.Dimension(900, 50));
         PanelInferior.setPreferredSize(new java.awt.Dimension(900, 50));
 
-        btnBuscar.setText("Buscar");
-        btnBuscar.setMaximumSize(new java.awt.Dimension(84, 32));
-        btnBuscar.setMinimumSize(new java.awt.Dimension(84, 32));
-        btnBuscar.setPreferredSize(new java.awt.Dimension(84, 32));
+        btnReservar.setText("Reservar");
+        btnReservar.setMaximumSize(new java.awt.Dimension(84, 32));
+        btnReservar.setMinimumSize(new java.awt.Dimension(84, 32));
+        btnReservar.setPreferredSize(new java.awt.Dimension(84, 32));
 
         btnAtras.setText("Atras");
         btnAtras.setMaximumSize(new java.awt.Dimension(84, 32));
@@ -221,7 +223,7 @@ public class VistaLugares extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnReservar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(99, 99, 99))
         );
         PanelInferiorLayout.setVerticalGroup(
@@ -229,7 +231,7 @@ public class VistaLugares extends javax.swing.JPanel {
             .addGroup(PanelInferiorLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReservar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar))
                 .addContainerGap(8, Short.MAX_VALUE))
@@ -1168,7 +1170,6 @@ public class VistaLugares extends javax.swing.JPanel {
     private javax.swing.JButton btnB7;
     private javax.swing.JButton btnB8;
     private javax.swing.JButton btnB9;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnC1;
     private javax.swing.JButton btnC10;
     private javax.swing.JButton btnC2;
@@ -1240,6 +1241,7 @@ public class VistaLugares extends javax.swing.JPanel {
     private javax.swing.JButton btnJ7;
     private javax.swing.JButton btnJ8;
     private javax.swing.JButton btnJ9;
+    private javax.swing.JButton btnReservar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
@@ -1257,7 +1259,7 @@ public class VistaLugares extends javax.swing.JPanel {
     private javax.swing.JPanel panelSuperior;
     // End of variables declaration//GEN-END:variables
 
-    public ControladorLugar getC() {
+    public ControladorLugar getControlerL() {
         return c;
     }
 
@@ -1369,8 +1371,8 @@ public class VistaLugares extends javax.swing.JPanel {
         return btnB9;
     }
 
-    public JButton getBtnBuscar() {
-        return btnBuscar;
+    public JButton getBtnReservar() {
+        return btnReservar;
     }
 
     public JButton getBtnC1() {
