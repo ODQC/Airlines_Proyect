@@ -76,8 +76,8 @@ public class ControladorVuelo implements Identificator, Cancelar, Mantenimiento,
     @Override
     public void Add() {
         try {
-
-            Vuelo Airl = new Vuelo(v.getTxtidFly().getText(), v.getTxtSource().getText(), v.getTxtDestination().getSelectedText(),
+            Airlineselected();
+            Vuelo Airl = new Vuelo(v.getTxtidFly().getText(), v.getTxtSource().getText(), v.getTxtDestination().getText(),
                     v.getJdcTakeOff().getText(), v.getJdcArrive().getText(), v.getCmbCapacity().getSelectedItem().toString(),
                     v.getCmbStatus().getSelectedItem().toString(), airSelected.getIdAirline(), airSelected.getNameAirline());
 
@@ -166,7 +166,7 @@ public class ControladorVuelo implements Identificator, Cancelar, Mantenimiento,
     
 
     public void Airlineselected() {
-        if (v.getPer().getListaVuelos().isEmpty()) {
+        if (v.getPer().getListaAerolineas().isEmpty()) {
             JOptionPane.showMessageDialog(null, "\n No hay elementos para modificar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
         } else {
             v.getPer().getListaAerolineas().forEach(p -> {

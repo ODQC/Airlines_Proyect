@@ -122,7 +122,7 @@ public class ControladorAerolinea implements Identificator, Cancelar, Mantenimie
         int size = v.getPer().getListaAerolineas().size();
         String  id = JOptionPane.showInputDialog("Ingrese el Id de la Aerolinea \n"+"que desea modificar:");
       v.getPer().getListaAerolineas().forEach(p-> {  
-            if (p.getIdAirline().equals(id)) {
+            if (p.getIdAirline().equals(id)) { 
                 String  nombre = JOptionPane.showInputDialog("Ingrese el nuevo nombre Aerolinea:");
                 p.setNameAirline(nombre);
                 descripcion1 = "Se Modificó la Aerolinea"+v.getTxtCodigoAerolinea().getText();
@@ -139,7 +139,6 @@ public class ControladorAerolinea implements Identificator, Cancelar, Mantenimie
         }
     }
 
-    
 
     @Override
     public void Find() {

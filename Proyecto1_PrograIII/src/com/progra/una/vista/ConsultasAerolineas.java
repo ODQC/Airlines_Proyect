@@ -5,24 +5,29 @@
  */
 package com.progra.una.vista;
 
+import com.progra.una.modelo.Interfaces.ShowObjects;
 import com.progra.una.modelo.Persistencia;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author oscardanielquesadacalderon
  */
-public class ConsultasAerolineas extends javax.swing.JPanel {
+public class ConsultasAerolineas extends javax.swing.JPanel implements ShowObjects {
 
     /**
      * Creates new form VistaReportes
      */
     private JPanel panelPrincipal;
+    private Persistencia per;
     public ConsultasAerolineas(JPanel panelPrincipal,Persistencia per) {
+        this.per =per;
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();
+        this.ShowObjects();
  
     }
 
@@ -43,7 +48,7 @@ public class ConsultasAerolineas extends javax.swing.JPanel {
         btnCancelar = new javax.swing.JButton();
         panelCentral = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbAirlines = new javax.swing.JTable();
+        tblAirlines = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(65, 81, 109));
         setMaximumSize(new java.awt.Dimension(900, 700));
@@ -128,14 +133,10 @@ public class ConsultasAerolineas extends javax.swing.JPanel {
 
         panelCentral.setBackground(new java.awt.Color(65, 81, 109));
 
-        tbAirlines.setBackground(new java.awt.Color(65, 70, 72));
-        tbAirlines.setForeground(new java.awt.Color(65, 70, 72));
-        tbAirlines.setModel(new javax.swing.table.DefaultTableModel(
+        tblAirlines.setForeground(java.awt.SystemColor.activeCaption);
+        tblAirlines.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Id Aerolinea", "Nombre Aerolinea"
@@ -149,11 +150,11 @@ public class ConsultasAerolineas extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tbAirlines);
-        if (tbAirlines.getColumnModel().getColumnCount() > 0) {
-            tbAirlines.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tbAirlines.getColumnModel().getColumn(1).setResizable(false);
-            tbAirlines.getColumnModel().getColumn(1).setPreferredWidth(50);
+        jScrollPane1.setViewportView(tblAirlines);
+        if (tblAirlines.getColumnModel().getColumnCount() > 0) {
+            tblAirlines.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tblAirlines.getColumnModel().getColumn(1).setResizable(false);
+            tblAirlines.getColumnModel().getColumn(1).setPreferredWidth(50);
         }
 
         javax.swing.GroupLayout panelCentralLayout = new javax.swing.GroupLayout(panelCentral);
@@ -187,6 +188,24 @@ public class ConsultasAerolineas extends javax.swing.JPanel {
     private javax.swing.JLabel jlTitlePanel;
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelSuperior;
-    private javax.swing.JTable tbAirlines;
+    private javax.swing.JTable tblAirlines;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void ShowObjects() {
+       per.getListaAerolineas().forEach( // se llama la lista donde estan los objetos
+       p->{ //se implementa la lamba donde p es el objeto 
+        DefaultTableModel modelo = (DefaultTableModel) tblAirlines.getModel(); // se crea un modelo para la tabla
+        Object [] colum=new Object[2];// se asigna un vector con la cantidad de colummas que tiene la tabla
+        colum[0]= p.getIdAirline(); // se asignan los parametros de los objetos a las columnas
+        colum[1]= p.getNameAirline();
+        modelo.addRow(colum); // se agregan las columnas(el objeto) a una fila de la tabla 
+        tblAirlines.setModel(modelo);// se agrega el modelo a la tabla
+       }
+       );
+        //Expresión lamda
+        per.getListaAerolineas().forEach( 
+        /*p es el parametro*/ p->{/*aquí se implementa el método */ } );
+    }                 
+    
 }

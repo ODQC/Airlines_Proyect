@@ -5,24 +5,29 @@
  */
 package com.progra.una.vista;
 
+import com.progra.una.modelo.Interfaces.ShowObjects;
 import com.progra.una.modelo.Persistencia;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author oscardanielquesadacalderon
  */
-public class ConsultasVuelos extends javax.swing.JPanel {
+public class ConsultasVuelos extends javax.swing.JPanel implements ShowObjects{
 
     /**
      * Creates new form VistaReportes
      */
     private JPanel panelPrincipal;
+    private Persistencia per;
     public ConsultasVuelos(JPanel panelPrincipal,Persistencia per) {
+        this.per = per;
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();
+        this.ShowObjects();
  
     }
 
@@ -43,7 +48,7 @@ public class ConsultasVuelos extends javax.swing.JPanel {
         btnCancelar = new javax.swing.JButton();
         panelCentral = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbAirlines = new javax.swing.JTable();
+        tblVuelos = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(65, 81, 109));
         setMaximumSize(new java.awt.Dimension(900, 700));
@@ -128,9 +133,9 @@ public class ConsultasVuelos extends javax.swing.JPanel {
 
         panelCentral.setBackground(new java.awt.Color(65, 81, 109));
 
-        tbAirlines.setBackground(new java.awt.Color(65, 70, 72));
-        tbAirlines.setForeground(new java.awt.Color(65, 70, 72));
-        tbAirlines.setModel(new javax.swing.table.DefaultTableModel(
+        tblVuelos.setBackground(new java.awt.Color(65, 70, 72));
+        tblVuelos.setForeground(new java.awt.Color(65, 70, 72));
+        tblVuelos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -149,11 +154,11 @@ public class ConsultasVuelos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tbAirlines);
-        if (tbAirlines.getColumnModel().getColumnCount() > 0) {
-            tbAirlines.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tbAirlines.getColumnModel().getColumn(1).setResizable(false);
-            tbAirlines.getColumnModel().getColumn(1).setPreferredWidth(50);
+        jScrollPane1.setViewportView(tblVuelos);
+        if (tblVuelos.getColumnModel().getColumnCount() > 0) {
+            tblVuelos.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tblVuelos.getColumnModel().getColumn(1).setResizable(false);
+            tblVuelos.getColumnModel().getColumn(1).setPreferredWidth(50);
         }
 
         javax.swing.GroupLayout panelCentralLayout = new javax.swing.GroupLayout(panelCentral);
@@ -187,6 +192,25 @@ public class ConsultasVuelos extends javax.swing.JPanel {
     private javax.swing.JLabel jlTitlePanel;
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelSuperior;
-    private javax.swing.JTable tbAirlines;
+    private javax.swing.JTable tblVuelos;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void ShowObjects() {
+        per.getListaVuelos().forEach( // se llama la lista donde estan los objetos
+       p->{ //se implementa la lamba donde p es el objeto 
+        DefaultTableModel modelo = (DefaultTableModel) tblVuelos.getModel(); // se crea un modelo para la tabla
+        Object [] colum=new Object[7];// se asigna un vector con la cantidad de colummas que tiene la tabla
+        colum[0]= p.getIdFly(); // se asignan los parametros de los objetos a las columnas
+        colum[1]= p.getSource();
+        colum[2]=p.getDestination();
+        colum[3]=p.getCapacity();
+        colum[4]=p.getStatusFly();
+        colum[5]=p.getTakeOffDate();
+        colum[6]=p.getArrivalDate();
+        modelo.addRow(colum); // se agregan las columnas(el objeto) a una fila de la tabla 
+        tblVuelos.setModel(modelo);// se agrega el modelo a la tabla
+       }
+       );
+    }
 }

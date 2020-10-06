@@ -136,7 +136,7 @@ public class VistaReservaciones extends javax.swing.JPanel {
             CentralGrid.gridy = 1;
             panelCentral.add(lbSelectFly, CentralGrid);
             
-            TablaVuelos tVuelos = new TablaVuelos();
+            TablaVuelos tVuelos = new TablaVuelos(per);
             tVuelos.setForeground(new java.awt.Color(243, 243, 243));
             CentralGrid.gridx = 0;
             CentralGrid.gridy = 2;
