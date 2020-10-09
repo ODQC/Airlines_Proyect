@@ -5,9 +5,12 @@
  */
 package com.progra.una.vista;
 
+import com.progra.una.controlador.ControladorConsultaAero;
 import com.progra.una.modelo.Interfaces.ShowObjects;
 import com.progra.una.modelo.Persistencia;
 import java.awt.CardLayout;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,12 +25,14 @@ public class ConsultasAerolineas extends javax.swing.JPanel implements ShowObjec
      */
     private JPanel panelPrincipal;
     private Persistencia per;
+    private ControladorConsultaAero c;
     public ConsultasAerolineas(JPanel panelPrincipal,Persistencia per) {
-        this.per =per;
+        this.per =per; 
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();
         this.ShowObjects();
+        this.c = new ControladorConsultaAero(this,per);
  
     }
 
@@ -46,17 +51,20 @@ public class ConsultasAerolineas extends javax.swing.JPanel implements ShowObjec
         btnBuscar = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
         panelCentral = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAirlines = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(65, 81, 109));
+        setBackground(new java.awt.Color(65, 70, 72));
         setMaximumSize(new java.awt.Dimension(900, 700));
         setMinimumSize(new java.awt.Dimension(900, 700));
         setPreferredSize(new java.awt.Dimension(900, 700));
         setLayout(new java.awt.BorderLayout());
 
         panelSuperior.setBackground(new java.awt.Color(35, 49, 67));
+        panelSuperior.setMaximumSize(new java.awt.Dimension(900, 100));
+        panelSuperior.setMinimumSize(new java.awt.Dimension(900, 100));
 
         jlTitlePanel.setBackground(new java.awt.Color(35, 49, 67));
         jlTitlePanel.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
@@ -97,20 +105,19 @@ public class ConsultasAerolineas extends javax.swing.JPanel implements ShowObjec
         btnAtras.setMaximumSize(new java.awt.Dimension(84, 32));
         btnAtras.setMinimumSize(new java.awt.Dimension(84, 32));
         btnAtras.setPreferredSize(new java.awt.Dimension(84, 32));
-        btnAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtrasActionPerformed(evt);
-            }
-        });
 
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setText("Cerrar");
+
+        jPasswordField1.setText("jPasswordField1");
 
         javax.swing.GroupLayout PanelInferiorLayout = new javax.swing.GroupLayout(PanelInferior);
         PanelInferior.setLayout(PanelInferiorLayout);
         PanelInferiorLayout.setHorizontalGroup(
             PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInferiorLayout.createSequentialGroup()
-                .addContainerGap(531, Short.MAX_VALUE)
+                .addGap(129, 129, 129)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
                 .addComponent(btnCancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -125,15 +132,19 @@ public class ConsultasAerolineas extends javax.swing.JPanel implements ShowObjec
                 .addGroup(PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnCancelar)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
         add(PanelInferior, java.awt.BorderLayout.PAGE_END);
 
         panelCentral.setBackground(new java.awt.Color(65, 81, 109));
+        panelCentral.setMaximumSize(new java.awt.Dimension(900, 550));
+        panelCentral.setMinimumSize(new java.awt.Dimension(900, 550));
 
-        tblAirlines.setForeground(java.awt.SystemColor.activeCaption);
+        tblAirlines.setBackground(new java.awt.Color(65, 70, 72));
+        tblAirlines.setForeground(java.awt.Color.white);
         tblAirlines.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -151,11 +162,6 @@ public class ConsultasAerolineas extends javax.swing.JPanel implements ShowObjec
             }
         });
         jScrollPane1.setViewportView(tblAirlines);
-        if (tblAirlines.getColumnModel().getColumnCount() > 0) {
-            tblAirlines.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tblAirlines.getColumnModel().getColumn(1).setResizable(false);
-            tblAirlines.getColumnModel().getColumn(1).setPreferredWidth(50);
-        }
 
         javax.swing.GroupLayout panelCentralLayout = new javax.swing.GroupLayout(panelCentral);
         panelCentral.setLayout(panelCentralLayout);
@@ -174,16 +180,13 @@ public class ConsultasAerolineas extends javax.swing.JPanel implements ShowObjec
         add(panelCentral, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAtrasActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelInferior;
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlTitlePanel;
     private javax.swing.JPanel panelCentral;
@@ -193,19 +196,52 @@ public class ConsultasAerolineas extends javax.swing.JPanel implements ShowObjec
 
     @Override
     public void ShowObjects() {
-       per.getListaAerolineas().forEach( // se llama la lista donde estan los objetos
-       p->{ //se implementa la lamba donde p es el objeto 
-        DefaultTableModel modelo = (DefaultTableModel) tblAirlines.getModel(); // se crea un modelo para la tabla
-        Object [] colum=new Object[2];// se asigna un vector con la cantidad de colummas que tiene la tabla
-        colum[0]= p.getIdAirline(); // se asignan los parametros de los objetos a las columnas
-        colum[1]= p.getNameAirline();
-        modelo.addRow(colum); // se agregan las columnas(el objeto) a una fila de la tabla 
-        tblAirlines.setModel(modelo);// se agrega el modelo a la tabla
-       }
-       );
-        //Expresión lamda
-        per.getListaAerolineas().forEach( 
-        /*p es el parametro*/ p->{/*aquí se implementa el método */ } );
+
+        try {
+            per.getListaAerolineas().forEach( // se llama la lista donde estan los objetos
+                    p -> { //se implementa la lamba donde p es el objeto 
+                        DefaultTableModel modelo = (DefaultTableModel) tblAirlines.getModel(); // se crea un modelo para la tabla
+                        Object[] colum = new Object[2];// se asigna un vector con la cantidad de colummas que tiene la tabla
+                        colum[0] = p.getIdAirline(); // se asignan los parametros de los objetos a las columnas
+                        colum[1] = p.getNameAirline();
+                        modelo.addRow(colum); // se agregan las columnas(el objeto) a una fila de la tabla 
+                        tblAirlines.setModel(modelo);// se agrega el modelo a la tabla
+                    }
+            );
+
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, ex + " " + "\nNo hay más elementos que mostrar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception ex) {
+
+            System.err.println(ex);
+
+        }
+
+
     }                 
+
+    private ControladorConsultaAero ControladorConsultaAero(ConsultasAerolineas aThis, Persistencia per) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public JPanel getPanelPrincipal() {
+        return panelPrincipal;
+    }
+
+    public Persistencia getPer() {
+        return per;
+    }
+
+    public JButton getBtnAtras() {
+        return btnAtras;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
     
 }

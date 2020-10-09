@@ -36,6 +36,7 @@ public class VistaVuelos extends javax.swing.JPanel{
     private JButton btnCancelar;
     private JButton btnVuelos;
     private JButton  btnGenerarCodigo;
+    private JButton btnCambiar;
     private JTextField txtidFly;
     private JTextField txtSource;
     private JTextField txtDestination;
@@ -291,11 +292,20 @@ public class VistaVuelos extends javax.swing.JPanel{
             GridInferior.gridx = 0; //Posición eje x
             GridInferior.gridy = 0; //Posición eje y
             
+            btnCambiar = new JButton("Guardar cambios");
+            btnCambiar.setPreferredSize(new Dimension(200, 40));
+            btnCambiar.setMinimumSize(new Dimension(200, 40));
+            btnCambiar.setMaximumSize(new Dimension(200, 40));
+            btnCambiar.setVisible(false);
+            GridInferior.gridx = 1; //Posición eje x
+            GridInferior.gridy = 0; //Posición eje y
+            panelInferior.add(btnCambiar , GridInferior);
+            
             btnCancelar = new JButton("Cancelar");
             btnCancelar.setPreferredSize(new Dimension(200, 40));
             btnCancelar.setMinimumSize(new Dimension(200, 40));
             btnCancelar.setMaximumSize(new Dimension(200, 40));
-            GridInferior.gridx = 1; //Posición eje x
+            GridInferior.gridx = 2; //Posición eje x
             GridInferior.gridy = 0; //Posición eje y
             panelInferior.add(btnCancelar, GridInferior);
 
@@ -303,7 +313,7 @@ public class VistaVuelos extends javax.swing.JPanel{
             btnVuelos.setPreferredSize(new Dimension(200, 40));
             btnVuelos.setMinimumSize(new Dimension(200, 40));
             btnVuelos.setMaximumSize(new Dimension(200, 40));
-            GridInferior.gridx = 2; //Posición eje x
+            GridInferior.gridx = 3; //Posición eje x
             GridInferior.gridy = 0; //Posición eje y
             panelInferior.add(btnVuelos, GridInferior);
 
@@ -385,6 +395,10 @@ public class VistaVuelos extends javax.swing.JPanel{
 
     public DateChooserCombo getJdcTakeOff() {
         return jdcTakeOff;
+    }
+
+    public JButton getBtnCambiar() {
+        return btnCambiar;
     }
 
     

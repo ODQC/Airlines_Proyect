@@ -7,22 +7,24 @@ package com.progra.una.vista;
 
 import com.progra.una.modelo.Interfaces.ShowObjects;
 import com.progra.una.modelo.Persistencia;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author oscardanielquesadacalderon
  */
-public class TablaVuelos extends javax.swing.JPanel implements ShowObjects {
+public class TablaVuelos extends javax.swing.JPanel  {
 
     /**
      * Creates new form TablaVuelos
      */
-    private Persistencia per;
-    public TablaVuelos(Persistencia per) {
-        this.per = per;
+  
+    public TablaVuelos() {
+       
         initComponents();
-        this.ShowObjects();
+    
     }
 
     /**
@@ -45,13 +47,11 @@ public class TablaVuelos extends javax.swing.JPanel implements ShowObjects {
         setMinimumSize(new java.awt.Dimension(800, 370));
         setPreferredSize(new java.awt.Dimension(800, 370));
 
-        tblVuelos.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.color1"));
+        tblVuelos.setBackground(new java.awt.Color(65, 70, 72));
+        tblVuelos.setForeground(java.awt.Color.white);
         tblVuelos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Código de Vuelo", "Cuidad de Partida", "Ciudad de destino", "Capacidad", "Vuelo", "Fecha de Salida", "Fecha de Arrivo"
@@ -122,22 +122,9 @@ public class TablaVuelos extends javax.swing.JPanel implements ShowObjects {
     private javax.swing.JPanel panelSuperior;
     private javax.swing.JTable tblVuelos;
     // End of variables declaration//GEN-END:variables
-@Override
-    public void ShowObjects() {
-        per.getListaVuelos().forEach( // se llama la lista donde estan los objetos
-       p->{ //se implementa la lamba donde p es el objeto 
-        DefaultTableModel modelo = (DefaultTableModel) tblVuelos.getModel(); // se crea un modelo para la tabla
-        Object [] colum=new Object[7];// se asigna un vector con la cantidad de colummas que tiene la tabla
-        colum[0]= p.getIdFly(); // se asignan los parametros de los objetos a las columnas
-        colum[1]= p.getSource();
-        colum[2]=p.getDestination();
-        colum[3]=p.getCapacity();
-        colum[4]=p.getStatusFly();
-        colum[5]=p.getTakeOffDate();
-        colum[6]=p.getArrivalDate();
-        modelo.addRow(colum); // se agregan las columnas(el objeto) a una fila de la tabla 
-        tblVuelos.setModel(modelo);// se agrega el modelo a la tabla
-       }
-       );
+
+    public JTable getTblVuelos() {
+        return tblVuelos;
     }
+
 }

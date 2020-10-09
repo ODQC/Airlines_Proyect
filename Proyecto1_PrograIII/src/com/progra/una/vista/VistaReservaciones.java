@@ -35,13 +35,14 @@ public class VistaReservaciones extends javax.swing.JPanel {
     private ControladorReservaciones c;
     private Reservacion m;
     private Persistencia per;
-    private JButton btnAnterior;
     private JButton btnCancelar;
     private JButton btnSiguiente;
+    private JButton btnDesplegar;
     private JButton btnGenerarCodigo;
     private JLabel lbSelectAirline;
     private JLabel lbSelectFly;
     private JComboBox<String> cmbAerolineas;
+    private TablaVuelos tVuelos;
 
    
     public VistaReservaciones(JPanel principal,Persistencia per) {
@@ -52,6 +53,7 @@ public class VistaReservaciones extends javax.swing.JPanel {
         this.principal = principal;
         principal.setLayout(new CardLayout());
         this.Iniciar();
+        this.FillCombo();
     }
 
     public void Iniciar() {
@@ -59,21 +61,19 @@ public class VistaReservaciones extends javax.swing.JPanel {
     }
 
    public void FillCombo(){
-    
-    try {
-       if(per.getListaAerolineas().isEmpty()){
-           JOptionPane.showMessageDialog(null, "\nNo hay  Aerolineas agreagadas", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
-       }else{
-           per.getListaAerolineas().forEach(p ->{cmbAerolineas.addItem(p.getNameAirline());});
-       }
-       
-         } catch (NullPointerException ex) {
+        try {
+
+            per.getListaAerolineas().forEach(p -> {
+                cmbAerolineas.addItem(p.getNameAirline());
+            });
+
+        } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, ex + " " + "\nNo hay  elementos que mostrar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
         } catch (Exception e) {
             System.err.println(e);
         }
     }
-    
+
     public void InitComponents() {
         try {
             this.per = new Persistencia();
@@ -128,15 +128,16 @@ public class VistaReservaciones extends javax.swing.JPanel {
             CentralGrid.gridy = 0; //Posición eje y
             panelCentral.add(cmbAerolineas, CentralGrid);
             cmbAerolineas.addItem("Seleccional");
-            this.FillCombo();
-          
-            lbSelectFly = new JLabel("Seleccione el vuelo:", JLabel.CENTER);
-            lbSelectFly.setForeground(new java.awt.Color(243, 243, 243));
-            CentralGrid.gridx = 0;
-            CentralGrid.gridy = 1;
-            panelCentral.add(lbSelectFly, CentralGrid);
             
-            TablaVuelos tVuelos = new TablaVuelos(per);
+            btnDesplegar = new JButton("Desplegar Vuelos");
+            btnDesplegar.setPreferredSize(new Dimension(150, 32));
+            btnDesplegar.setMinimumSize(new Dimension(150, 32));
+            btnDesplegar.setMaximumSize(new Dimension(150, 32));
+            CentralGrid.gridx = 1; //Posición eje x
+            CentralGrid.gridy = 1; //Posición eje y
+            panelCentral.add(btnDesplegar, CentralGrid);
+
+            tVuelos = new TablaVuelos();
             tVuelos.setForeground(new java.awt.Color(243, 243, 243));
             CentralGrid.gridx = 0;
             CentralGrid.gridy = 2;
@@ -154,20 +155,11 @@ public class VistaReservaciones extends javax.swing.JPanel {
             GridInferior.gridy = 0; //Posición eje y
             panelInferior.add(btnCancelar, GridInferior);
 
-            btnAnterior = new JButton("Anterior");
-            btnAnterior.setPreferredSize(new Dimension(200, 40));
-            btnAnterior.setMinimumSize(new Dimension(200, 40));
-            btnAnterior.setMaximumSize(new Dimension(200, 40));
-            GridInferior.gridx = 1; //Posición eje x
-            GridInferior.gridy = 0; //Posición eje y
-
-            panelInferior.add(btnAnterior, GridInferior);
-
             btnSiguiente = new JButton("Siguiente");
             btnSiguiente.setPreferredSize(new Dimension(200, 40));
             btnSiguiente.setMinimumSize(new Dimension(200, 40));
             btnSiguiente.setMaximumSize(new Dimension(200, 40));
-            GridInferior.gridx = 2; //Posición eje x
+            GridInferior.gridx = 1; //Posición eje x
             GridInferior.gridy = 0; //Posición eje y
             panelInferior.add(btnSiguiente, GridInferior);
 
@@ -185,10 +177,6 @@ public class VistaReservaciones extends javax.swing.JPanel {
             System.out.println(e);
         }
 
-    }
-
-    public JButton getBtnAnterior() {
-        return btnAnterior;
     }
 
     public JButton getBtnCancelar() {
@@ -214,4 +202,17 @@ public class VistaReservaciones extends javax.swing.JPanel {
     public ControladorReservaciones getControlerR() {
         return c;
     }
+
+    public JComboBox<String> getCmbAerolineas() {
+        return cmbAerolineas;
+    }
+
+    public JButton getBtnDesplegar() {
+        return btnDesplegar;
+    }
+
+    public TablaVuelos gettVuelos() {
+        return tVuelos;
+    }
+    
 }

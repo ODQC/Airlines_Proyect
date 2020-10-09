@@ -27,8 +27,9 @@ public class VistaLugares extends javax.swing.JPanel {
     private ControladorLugar c;
     private JPanel panelPrincipal;
     private Lugar m;
-    
+    private Persistencia per; 
     public VistaLugares(JPanel panelPrincipal,Persistencia per) {
+        this.per = per;
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();
@@ -1677,6 +1678,14 @@ public class VistaLugares extends javax.swing.JPanel {
 
     public JPanel getPanelSuperior() {
         return panelSuperior;
+    }
+
+    public Persistencia getPer() {
+        return per;
+    }
+
+    public ControladorLugar getC() {
+        return c;
     }
 
 }

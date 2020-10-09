@@ -33,6 +33,16 @@ public class Vuelo extends  Aerolinea{
         this.stateFly = stateFly;
     }
 
+
+    @Override
+    public String getNameAirline() {
+        return super.getNameAirline(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getIdAirline() {
+        return super.getIdAirline(); //To change body of generated methods, choose Tools | Templates.
+    }
     public String getIdFly() {
         return idFly;
     }

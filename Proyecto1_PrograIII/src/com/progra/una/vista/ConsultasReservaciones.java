@@ -5,8 +5,10 @@
  */
 package com.progra.una.vista;
 
+import com.progra.una.controlador.ControladorConsultaReservacion;
 import com.progra.una.modelo.Persistencia;
 import java.awt.CardLayout;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -19,10 +21,14 @@ public class ConsultasReservaciones extends javax.swing.JPanel {
      * Creates new form VistaReportes
      */
     private JPanel panelPrincipal;
+    private Persistencia per;
+    private ControladorConsultaReservacion c;
     public ConsultasReservaciones(JPanel panelPrincipal,Persistencia per) {
+        this.per =per;
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();
+        this.c = new ControladorConsultaReservacion(this,per);
  
     }
 
@@ -92,20 +98,15 @@ public class ConsultasReservaciones extends javax.swing.JPanel {
         btnAtras.setMaximumSize(new java.awt.Dimension(84, 32));
         btnAtras.setMinimumSize(new java.awt.Dimension(84, 32));
         btnAtras.setPreferredSize(new java.awt.Dimension(84, 32));
-        btnAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtrasActionPerformed(evt);
-            }
-        });
 
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setText("Cerrar");
 
         javax.swing.GroupLayout PanelInferiorLayout = new javax.swing.GroupLayout(PanelInferior);
         PanelInferior.setLayout(PanelInferiorLayout);
         PanelInferiorLayout.setHorizontalGroup(
             PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInferiorLayout.createSequentialGroup()
-                .addContainerGap(531, Short.MAX_VALUE)
+                .addContainerGap(547, Short.MAX_VALUE)
                 .addComponent(btnCancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,21 +162,20 @@ public class ConsultasReservaciones extends javax.swing.JPanel {
         panelCentralLayout.setHorizontalGroup(
             panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCentralLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 847, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelCentralLayout.setVerticalGroup(
             panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+            .addGroup(panelCentralLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         add(panelCentral, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAtrasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -189,4 +189,25 @@ public class ConsultasReservaciones extends javax.swing.JPanel {
     private javax.swing.JPanel panelSuperior;
     private javax.swing.JTable tbAirlines;
     // End of variables declaration//GEN-END:variables
+
+    public JPanel getPanelPrincipal() {
+        return panelPrincipal;
+    }
+
+    public Persistencia getPer() {
+        return per;
+    }
+
+    public JButton getBtnAtras() {
+        return btnAtras;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
 }

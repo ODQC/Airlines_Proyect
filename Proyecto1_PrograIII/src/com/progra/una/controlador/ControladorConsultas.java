@@ -5,6 +5,7 @@
  */
 package com.progra.una.controlador;
 
+import com.progra.una.controlador.InterfacesControl.Initlisteners;
 import com.progra.una.modelo.Lugar;
 import com.progra.una.modelo.Persistencia;
 import com.progra.una.vista.VistaConsultas;
@@ -14,13 +15,18 @@ import com.progra.una.vista.VistaLugares;
  *
  * @author oscardanielquesadacalderon
  */
-public class ControladorConsultas {
+public class ControladorConsultas implements Initlisteners {
      private Persistencia m;
     private VistaConsultas v;
 
     public ControladorConsultas(Persistencia m, VistaConsultas v) {
         this.m = m;
         this.v = v;
+    }
+
+    @Override
+    public void InitListeners() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

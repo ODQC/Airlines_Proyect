@@ -15,7 +15,6 @@ import javax.swing.JTable;
 public interface Mantenimiento {
     public void Add();
     public void Delete();
-    public void Find();
     public void Update();
 
     

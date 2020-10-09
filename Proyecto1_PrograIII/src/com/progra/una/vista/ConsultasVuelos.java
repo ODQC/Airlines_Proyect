@@ -5,9 +5,12 @@
  */
 package com.progra.una.vista;
 
+import com.progra.una.controlador.ControladorConsultaVuelo;
 import com.progra.una.modelo.Interfaces.ShowObjects;
 import com.progra.una.modelo.Persistencia;
 import java.awt.CardLayout;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,12 +25,14 @@ public class ConsultasVuelos extends javax.swing.JPanel implements ShowObjects{
      */
     private JPanel panelPrincipal;
     private Persistencia per;
+    private ControladorConsultaVuelo c;
     public ConsultasVuelos(JPanel panelPrincipal,Persistencia per) {
         this.per = per;
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();
         this.ShowObjects();
+        this.c =new ControladorConsultaVuelo(this,per);
  
     }
 
@@ -57,6 +62,9 @@ public class ConsultasVuelos extends javax.swing.JPanel implements ShowObjects{
         setLayout(new java.awt.BorderLayout());
 
         panelSuperior.setBackground(new java.awt.Color(35, 49, 67));
+        panelSuperior.setMaximumSize(new java.awt.Dimension(900, 100));
+        panelSuperior.setMinimumSize(new java.awt.Dimension(900, 100));
+        panelSuperior.setPreferredSize(new java.awt.Dimension(900, 100));
 
         jlTitlePanel.setBackground(javax.swing.UIManager.getDefaults().getColor("TabbedPane.selected"));
         jlTitlePanel.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
@@ -77,8 +85,8 @@ public class ConsultasVuelos extends javax.swing.JPanel implements ShowObjects{
             panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelSuperiorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jlTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(553, 553, 553))
         );
 
         add(panelSuperior, java.awt.BorderLayout.PAGE_START);
@@ -97,20 +105,15 @@ public class ConsultasVuelos extends javax.swing.JPanel implements ShowObjects{
         btnAtras.setMaximumSize(new java.awt.Dimension(84, 32));
         btnAtras.setMinimumSize(new java.awt.Dimension(84, 32));
         btnAtras.setPreferredSize(new java.awt.Dimension(84, 32));
-        btnAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtrasActionPerformed(evt);
-            }
-        });
 
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setText("Cerrar");
 
         javax.swing.GroupLayout PanelInferiorLayout = new javax.swing.GroupLayout(PanelInferior);
         PanelInferior.setLayout(PanelInferiorLayout);
         PanelInferiorLayout.setHorizontalGroup(
             PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInferiorLayout.createSequentialGroup()
-                .addContainerGap(531, Short.MAX_VALUE)
+                .addContainerGap(547, Short.MAX_VALUE)
                 .addComponent(btnCancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -132,55 +135,60 @@ public class ConsultasVuelos extends javax.swing.JPanel implements ShowObjects{
         add(PanelInferior, java.awt.BorderLayout.PAGE_END);
 
         panelCentral.setBackground(new java.awt.Color(65, 81, 109));
+        panelCentral.setMaximumSize(new java.awt.Dimension(900, 550));
+        panelCentral.setMinimumSize(new java.awt.Dimension(900, 550));
+        panelCentral.setRequestFocusEnabled(false);
 
         tblVuelos.setBackground(new java.awt.Color(65, 70, 72));
-        tblVuelos.setForeground(new java.awt.Color(65, 70, 72));
+        tblVuelos.setForeground(java.awt.Color.white);
         tblVuelos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Id Aerolinea", "Nombre Aerolinea"
+                "Código de Vuelo", "Cuidad de Partida", "Ciudad de destino", "Capacidad", "Vuelo", "Fecha de Salida", "Fecha de Arrivo", "Aerolinea", "Cod Aerolinea"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tblVuelos);
-        if (tblVuelos.getColumnModel().getColumnCount() > 0) {
-            tblVuelos.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tblVuelos.getColumnModel().getColumn(1).setResizable(false);
-            tblVuelos.getColumnModel().getColumn(1).setPreferredWidth(50);
-        }
 
         javax.swing.GroupLayout panelCentralLayout = new javax.swing.GroupLayout(panelCentral);
         panelCentral.setLayout(panelCentralLayout);
         panelCentralLayout.setHorizontalGroup(
             panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCentralLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 900, Short.MAX_VALUE)
+            .addGroup(panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelCentralLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         panelCentralLayout.setVerticalGroup(
             panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
+            .addGroup(panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelCentralLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         add(panelCentral, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAtrasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -197,20 +205,53 @@ public class ConsultasVuelos extends javax.swing.JPanel implements ShowObjects{
 
     @Override
     public void ShowObjects() {
-        per.getListaVuelos().forEach( // se llama la lista donde estan los objetos
-       p->{ //se implementa la lamba donde p es el objeto 
-        DefaultTableModel modelo = (DefaultTableModel) tblVuelos.getModel(); // se crea un modelo para la tabla
-        Object [] colum=new Object[7];// se asigna un vector con la cantidad de colummas que tiene la tabla
-        colum[0]= p.getIdFly(); // se asignan los parametros de los objetos a las columnas
-        colum[1]= p.getSource();
-        colum[2]=p.getDestination();
-        colum[3]=p.getCapacity();
-        colum[4]=p.getStatusFly();
-        colum[5]=p.getTakeOffDate();
-        colum[6]=p.getArrivalDate();
-        modelo.addRow(colum); // se agregan las columnas(el objeto) a una fila de la tabla 
-        tblVuelos.setModel(modelo);// se agrega el modelo a la tabla
-       }
-       );
+       
+           try {
+            per.getListaVuelos().forEach( // se llama la lista donde estan los objetos
+                    p -> { //se implementa la lamba donde p es el objeto 
+                        DefaultTableModel modelo = (DefaultTableModel) tblVuelos.getModel(); // se crea un modelo para la tabla
+                        Object[] colum = new Object[9];// se asigna un vector con la cantidad de colummas que tiene la tabla
+                        colum[0] = p.getIdFly(); // se asignan los parametros de los objetos a las columnas
+                        colum[1] = p.getSource();
+                        colum[2] = p.getDestination();
+                        colum[3] = p.getCapacity();
+                        colum[4] = p.getStatusFly();
+                        colum[5] = p.getTakeOffDate();
+                        colum[6] = p.getArrivalDate();
+                        colum[7] = p.getNameAirline();
+                        colum[8] = p.getIdAirline();
+                        modelo.addRow(colum); // se agregan las columnas(el objeto) a una fila de la tabla 
+                        tblVuelos.setModel(modelo);// se agrega el modelo a la tabla
+                    }
+            );
+
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, ex + " " + "\nNo hay más elementos que mostrar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception ex) {
+
+            System.err.println(ex);
+
+        }
+
+    }
+
+    public JPanel getPanelPrincipal() {
+        return panelPrincipal;
+    }
+
+    public Persistencia getPer() {
+        return per;
+    }
+
+    public JButton getBtnAtras() {
+        return btnAtras;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
     }
 }

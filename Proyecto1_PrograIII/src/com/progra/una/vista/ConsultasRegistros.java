@@ -5,24 +5,34 @@
  */
 package com.progra.una.vista;
 
+import com.progra.una.controlador.ControladorConsultasRegistros;
+import com.progra.una.modelo.Interfaces.ShowObjects;
 import com.progra.una.modelo.Persistencia;
 import java.awt.CardLayout;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author oscardanielquesadacalderon
  */
-public class ConsultasRegistros extends javax.swing.JPanel {
+public class ConsultasRegistros extends javax.swing.JPanel implements ShowObjects {
 
     /**
      * Creates new form VistaReportes
      */
     private JPanel panelPrincipal;
+    private Persistencia per;
+    private ControladorConsultasRegistros c;
     public ConsultasRegistros(JPanel panelPrincipal,Persistencia per) {
+        this.per = per;
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();
+        this.ShowObjects();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+        this.c = new ControladorConsultasRegistros(this,per);
  
     }
 
@@ -39,11 +49,10 @@ public class ConsultasRegistros extends javax.swing.JPanel {
         jlTitlePanel = new javax.swing.JLabel();
         PanelInferior = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JButton();
-        btnAtras = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         panelCentral = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbAirlines = new javax.swing.JTable();
+        tblRegistro = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(65, 81, 109));
         setMaximumSize(new java.awt.Dimension(900, 700));
@@ -90,28 +99,16 @@ public class ConsultasRegistros extends javax.swing.JPanel {
         btnBuscar.setMinimumSize(new java.awt.Dimension(84, 32));
         btnBuscar.setPreferredSize(new java.awt.Dimension(84, 32));
 
-        btnAtras.setText("Atras");
-        btnAtras.setMaximumSize(new java.awt.Dimension(84, 32));
-        btnAtras.setMinimumSize(new java.awt.Dimension(84, 32));
-        btnAtras.setPreferredSize(new java.awt.Dimension(84, 32));
-        btnAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtrasActionPerformed(evt);
-            }
-        });
-
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setText("Cerrar");
 
         javax.swing.GroupLayout PanelInferiorLayout = new javax.swing.GroupLayout(PanelInferior);
         PanelInferior.setLayout(PanelInferiorLayout);
         PanelInferiorLayout.setHorizontalGroup(
             PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInferiorLayout.createSequentialGroup()
-                .addContainerGap(531, Short.MAX_VALUE)
+                .addContainerGap(643, Short.MAX_VALUE)
                 .addComponent(btnCancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(99, 99, 99))
         );
@@ -121,7 +118,6 @@ public class ConsultasRegistros extends javax.swing.JPanel {
                 .addGap(10, 10, 10)
                 .addGroup(PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
@@ -130,32 +126,32 @@ public class ConsultasRegistros extends javax.swing.JPanel {
 
         panelCentral.setBackground(new java.awt.Color(65, 81, 109));
 
-        tbAirlines.setBackground(new java.awt.Color(65, 70, 72));
-        tbAirlines.setForeground(new java.awt.Color(65, 70, 72));
-        tbAirlines.setModel(new javax.swing.table.DefaultTableModel(
+        tblRegistro.setBackground(new java.awt.Color(65, 70, 72));
+        tblRegistro.setForeground(java.awt.Color.white);
+        tblRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Id Aerolinea", "Nombre Aerolinea"
+                "Id Reporte", "Id Usuario", "Descripción", "Fecha"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tbAirlines);
-        if (tbAirlines.getColumnModel().getColumnCount() > 0) {
-            tbAirlines.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tbAirlines.getColumnModel().getColumn(1).setResizable(false);
-            tbAirlines.getColumnModel().getColumn(1).setPreferredWidth(50);
+        jScrollPane1.setViewportView(tblRegistro);
+        if (tblRegistro.getColumnModel().getColumnCount() > 0) {
+            tblRegistro.getColumnModel().getColumn(0).setResizable(false);
+            tblRegistro.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tblRegistro.getColumnModel().getColumn(1).setResizable(false);
+            tblRegistro.getColumnModel().getColumn(1).setPreferredWidth(50);
+            tblRegistro.getColumnModel().getColumn(2).setResizable(false);
+            tblRegistro.getColumnModel().getColumn(3).setResizable(false);
         }
 
         javax.swing.GroupLayout panelCentralLayout = new javax.swing.GroupLayout(panelCentral);
@@ -175,20 +171,56 @@ public class ConsultasRegistros extends javax.swing.JPanel {
         add(panelCentral, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAtrasActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelInferior;
-    private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlTitlePanel;
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelSuperior;
-    private javax.swing.JTable tbAirlines;
+    private javax.swing.JTable tblRegistro;
     // End of variables declaration//GEN-END:variables
+
+    public JPanel getPanelPrincipal() {
+        return panelPrincipal;
+    }
+
+    public Persistencia getPer() {
+        return per;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    @Override
+    public void ShowObjects() {
+      try {
+            per.getListaReportes().forEach(p -> { //se implementa la lamba donde p es el objeto 
+                        DefaultTableModel modelo = (DefaultTableModel) tblRegistro.getModel(); // se crea un modelo para la tabla
+                        Object[] colum = new Object[4];// se asigna un vector con la cantidad de colummas que tiene la tabla
+                        colum[0] = p.getIdReport(); // se asignan los parametros de los objetos a las columnas
+                        colum[1] = p.getIdUsuario();
+                        colum[2] = p.getDescription();
+                        colum[3] = p.getDate();
+                        modelo.addRow(colum); // se agregan las columnas(el objeto) a una fila de la tabla 
+                        tblRegistro.setModel(modelo);// se agrega el modelo a la tabla
+                    }
+            );
+
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, ex + " " + "\nNo hay más elementos que mostrar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception ex) {
+
+            System.err.println(ex);
+
+        }
+    }
+
 }
