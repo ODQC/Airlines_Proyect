@@ -5,6 +5,8 @@
  */
 package com.progra.una.vista;
 
+import com.progra.una.modelo.Persistencia;
+
 /**
  *
  * @author oscardanielquesadacalderon
@@ -14,7 +16,7 @@ public class VistaReportes extends javax.swing.JPanel {
     /**
      * Creates new form VistaReportes
      */
-    public VistaReportes() {
+    public VistaReportes(Persistencia per) {
         initComponents();
     }
 

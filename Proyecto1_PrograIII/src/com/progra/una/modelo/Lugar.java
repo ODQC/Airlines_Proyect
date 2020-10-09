@@ -18,8 +18,8 @@ public class Lugar extends Vuelo{
         this.idPlace = idPlace;
         this.StatusPlace = StatusPlace;
     }
-  
 
+ 
     public String getIdPlace() {
         return idPlace;
     }

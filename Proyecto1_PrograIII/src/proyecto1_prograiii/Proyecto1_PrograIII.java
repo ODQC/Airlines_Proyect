@@ -5,6 +5,7 @@
  */
 package proyecto1_prograiii;
 
+import com.progra.una.modelo.Persistencia;
 import com.progra.una.vista.VistaMenuPrincipal;
 
 /**
@@ -18,7 +19,8 @@ public class Proyecto1_PrograIII {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-       VistaMenuPrincipal principal = new VistaMenuPrincipal();
+       Persistencia per = new Persistencia();
+       VistaMenuPrincipal principal = new VistaMenuPrincipal(per);
        principal.iniciar();
     }
     

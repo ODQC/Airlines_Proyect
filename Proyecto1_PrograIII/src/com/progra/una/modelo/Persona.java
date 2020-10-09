@@ -15,13 +15,13 @@ public class Persona {
     private String Name;
     private String Apellido1;
     private String Apellido2;
-    private int Tipo;
+    private String Tipo;
     private String password;
 
     public Persona() {
     }
 
-    public Persona(String Id, String Name, String Apellido1, String Apellido2, int Tipo, String password) {
+    public Persona(String Id, String Name, String Apellido1, String Apellido2, String Tipo, String password) {
         this.Id = Id;
         this.Name = Name;
         this.Apellido1 = Apellido1;
@@ -48,7 +48,7 @@ public class Persona {
         return Apellido2;
     }
 
-    public int getTipo() {
+    public String getTipo() {
         return Tipo;
     }
 
@@ -74,7 +74,7 @@ public class Persona {
         this.Apellido2 = Apellido2;
     }
 
-    public void setTipo(int Tipo) {
+    public void setTipo(String Tipo) {
         this.Tipo = Tipo;
     }
 

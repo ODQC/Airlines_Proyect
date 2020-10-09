@@ -10,15 +10,22 @@ package com.progra.una.modelo;
  * @author oscardanielquesadacalderon
  */
 public class Reporte {
-    String idReport;
-    String description ;
-    String date;
+   private String idReport;
+   private String idUsuario;
+   private String description ;
+   private String date;
 
-    public Reporte(String idReport, String description, String date) {
+    public Reporte(String idReport, String idUsuario, String description, String date) {
         this.idReport = idReport;
+        this.idUsuario = idUsuario;
         this.description = description;
         this.date = date;
     }
+
+    public Reporte() {
+    }
+
+   
 
     public String getDate() {
         return date;
@@ -44,4 +51,13 @@ public class Reporte {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+    
 }

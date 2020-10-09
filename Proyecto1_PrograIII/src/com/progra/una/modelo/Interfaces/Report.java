@@ -16,14 +16,13 @@ import java.util.Random;
  * @author oscardanielquesadacalderon
  */
 public interface Report {
-    public default void AddReport(String description){
+    public default void AddReport(String description,String idUser,Persistencia per){
  try {
         Random random = new Random();
         int val = random.nextInt();
         String idReport = new String();
         idReport = Integer.toHexString(val);
-        Reporte report = new Reporte(idReport,description,LocalDateTime.now().toString());
-        Persistencia per = new Persistencia();
+        Reporte report = new Reporte(idReport,idUser,description,LocalDateTime.now().toString());
         per.getListaReportes().add(report);
 }
 catch(Exception e) {

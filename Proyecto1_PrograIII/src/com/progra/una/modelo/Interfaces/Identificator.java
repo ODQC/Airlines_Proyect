@@ -5,12 +5,14 @@
  */
 package com.progra.una.modelo.Interfaces;
 
+import java.time.LocalDateTime;
 import java.util.Random;
 
 /**
  *
  * @author oscardanielquesadacalderon
  */
+
 public interface Identificator {
     public default String CodeGenerator(int lengthCode){
         Random r = new Random();
@@ -18,8 +20,9 @@ public interface Identificator {
         while(sb.length() < lengthCode){
             sb.append(Integer.toHexString(r.nextInt()));
         }
-
-        return sb.toString().substring(0, lengthCode);
+        
+        String code = LocalDateTime.now().getYear()+LocalDateTime.now().getDayOfYear()+(sb.toString().substring(0, lengthCode));
+        return code;
     }
     
 }
