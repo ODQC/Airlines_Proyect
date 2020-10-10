@@ -9,6 +9,7 @@ import com.progra.una.controlador.InterfacesControl.Cancelar;
 import com.progra.una.controlador.InterfacesControl.CleanForm;
 import com.progra.una.controlador.InterfacesControl.Initlisteners;
 import com.progra.una.modelo.Aerolinea;
+import com.progra.una.modelo.Interfaces.EnablePlaces;
 import com.progra.una.modelo.Interfaces.Identificator;
 import com.progra.una.modelo.Interfaces.Mantenimiento;
 import com.progra.una.modelo.Interfaces.Report;
@@ -25,7 +26,7 @@ import javax.swing.JOptionPane;
  *
  * @author oscardanielquesadacalderon
  */
-public class ControladorVuelo implements Identificator, Cancelar, Mantenimiento, Report, CleanForm, Initlisteners {
+public class ControladorVuelo implements Identificator, Cancelar, Mantenimiento, Report, CleanForm, Initlisteners,EnablePlaces {
 
     private Vuelo m;
     private VistaVuelos v;
@@ -52,11 +53,11 @@ public class ControladorVuelo implements Identificator, Cancelar, Mantenimiento,
     public void Add() {
         try {
             Airlineselected();
-            Vuelo fly = new Vuelo(v.getTxtidFly().getText(), v.getTxtSource().getText(), v.getTxtDestination().getText(),
+            m = new Vuelo(v.getTxtidFly().getText(), v.getTxtSource().getText(), v.getTxtDestination().getText(),
                     v.getJdcTakeOff().getText(), v.getJdcArrive().getText(), v.getCmbCapacity().getSelectedItem().toString(),
                     v.getCmbStatus().getSelectedItem().toString(), airSelected.getIdAirline(), airSelected.getNameAirline());
-
-            v.getPer().getListaVuelos().add(fly);
+            this.EnableFlyPacles(m);
+            v.getPer().getListaVuelos().add(m);
             descripcion1 = "Se creó el vuelo " + v.getTxtidFly().getText();
             CleanForms();
             this.AddReport(descripcion1,"207460988",v.getPer());

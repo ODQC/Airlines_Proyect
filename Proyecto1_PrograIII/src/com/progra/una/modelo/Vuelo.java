@@ -5,6 +5,8 @@
  */
 package com.progra.una.modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author oscardanielquesadacalderon
@@ -19,6 +21,7 @@ public class Vuelo extends  Aerolinea{
     private String arrivalDate;
     private String capacity;
     private String stateFly;
+    private ArrayList<Lugar> listPlace;
 
     public Vuelo(String idFly, String source, String destination, String takeOffDate, 
             String arrivalDate, String capacity, String stateFly, String idAirline, 
@@ -31,6 +34,7 @@ public class Vuelo extends  Aerolinea{
         this.arrivalDate = arrivalDate;
         this.capacity = capacity;
         this.stateFly = stateFly;
+        this.listPlace = new ArrayList<Lugar>();
     }
 
 
@@ -99,5 +103,12 @@ public class Vuelo extends  Aerolinea{
         this.stateFly = stateFly;
     }
 
-  
+    public String getStateFly() {
+        return stateFly;
+    }
+
+    public ArrayList<Lugar> getListPlace() {
+        return listPlace;
+    }
+
 }

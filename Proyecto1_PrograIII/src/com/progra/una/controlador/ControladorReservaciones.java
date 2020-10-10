@@ -45,6 +45,7 @@ public class ControladorReservaciones implements Cancelar, Report, Initlisteners
     
     public void LoadFlies() {
         try {
+            v.gettVuelos().getTblVuelos().removeAll();
             v.getPer().getListaVuelos().forEach( // se llama la lista donde estan los objetos
                     p -> { //se implementa la lamba donde p es el objeto 
                         DefaultTableModel modelo = (DefaultTableModel) v.gettVuelos().getTblVuelos().getModel(); // se crea un modelo para la tabla
@@ -81,10 +82,11 @@ public class ControladorReservaciones implements Cancelar, Report, Initlisteners
                     JOptionPane.showMessageDialog(null, "\nNo hay elementos que mostrar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
                     
                 } else {
-                    
-                    int  fly = v.gettVuelos().getTblVuelos().getSelectedRow();
+                    DefaultTableModel modelo = (DefaultTableModel) v.gettVuelos().getTblVuelos().getModel(); 
+                    int selectedRowIndex = v.gettVuelos().getTblVuelos().getSelectedRow();
+                    String idAirline = modelo.getValueAt(selectedRowIndex, 0).toString();
                     vL = new VistaLugares(v.getPrincipal(), v.getPer());
-                    vL.getC().AirlineSelected(fly);
+                    vL.getC().FlySelected(idAirline);
                     v.getPrincipal().add("aerolineaForm", vL);
                     CardLayout card = (CardLayout) v.getPrincipal().getLayout();
                     card.next(v.getPrincipal());

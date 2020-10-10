@@ -84,8 +84,8 @@ public class ControladorAerolinea implements Identificator, Cancelar, Mantenimie
     public void Add() {
         try {
 
-            Aerolinea Airl = new Aerolinea(v.getTxtCodigoAerolinea().getText(), v.getTxtNombreAerolinea().getText());
-            v.getPer().getListaAerolineas().add(Airl);
+            m = new Aerolinea(v.getTxtCodigoAerolinea().getText(), v.getTxtNombreAerolinea().getText());
+            v.getPer().getListaAerolineas().add(m);
             descripcion1 = "Se creó la Aerolinea " + v.getTxtCodigoAerolinea().getText();
             this.AddReport(descripcion1,"207460988",v.getPer());
             CleanForms();
