@@ -6,7 +6,7 @@
 package com.progra.una.vista;
 
 import com.progra.una.controlador.ControladorVuelo;
-import datechooser.beans.DateChooserCombo;
+
 import com.progra.una.modelo.Persistencia;
 import com.progra.una.modelo.Vuelo;
 import java.awt.BorderLayout;
@@ -389,11 +389,11 @@ public class VistaVuelos extends javax.swing.JPanel{
         return jlArrival;
     }
 
-    public DateChooserCombo getJdcArrive() {
+    public datechooser.beans.DateChooserCombo getJdcArrive() {
         return jdcArrive;
     }
 
-    public DateChooserCombo getJdcTakeOff() {
+    public datechooser.beans.DateChooserCombo  getJdcTakeOff() {
         return jdcTakeOff;
     }
 
