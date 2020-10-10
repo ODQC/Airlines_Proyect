@@ -40,7 +40,7 @@ public class VistaMenuPrincipal extends JFrame {
     private Persistencia per;
     public VistaMenuPrincipal(Persistencia p) {
         this.per = p;
-        this.setSize(1200, 700);
+        this.setSize(1200, 730);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);

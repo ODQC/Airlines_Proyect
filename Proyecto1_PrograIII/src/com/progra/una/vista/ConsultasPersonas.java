@@ -6,6 +6,8 @@
 package com.progra.una.vista;
 
 import com.progra.una.controlador.ControladorConsultaAero;
+import com.progra.una.controlador.ControladorConsultaPersona;
+import com.progra.una.controlador.ControladorPersona;
 import com.progra.una.modelo.Interfaces.ShowObjects;
 import com.progra.una.modelo.Persistencia;
 import java.awt.CardLayout;
@@ -18,21 +20,21 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author oscardanielquesadacalderon
  */
-public class ConsultasAerolineas extends javax.swing.JPanel implements ShowObjects {
+public class ConsultasPersonas extends javax.swing.JPanel implements ShowObjects {
 
     /**
      * Creates new form VistaReportes
      */
     private JPanel panelPrincipal;
     private Persistencia per;
-    private ControladorConsultaAero c;
-    public ConsultasAerolineas(JPanel panelPrincipal,Persistencia per) {
-        this.per =per; 
+    private ControladorConsultaPersona c;
+    public ConsultasPersonas(JPanel panelPrincipal,Persistencia per) {
+        this.per = per; 
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();
         this.ShowObjects();
-        this.c = new ControladorConsultaAero(this,per);
+        this.c = new ControladorConsultaPersona(per, this);
  
     }
 
@@ -53,7 +55,7 @@ public class ConsultasAerolineas extends javax.swing.JPanel implements ShowObjec
         btnCancelar = new javax.swing.JButton();
         panelCentral = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblAirlines = new javax.swing.JTable();
+        tblPersonas = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(65, 70, 72));
         setMaximumSize(new java.awt.Dimension(900, 700));
@@ -69,7 +71,7 @@ public class ConsultasAerolineas extends javax.swing.JPanel implements ShowObjec
         jlTitlePanel.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jlTitlePanel.setForeground(java.awt.SystemColor.activeCaptionBorder);
         jlTitlePanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlTitlePanel.setText("Registro de Aerolineas");
+        jlTitlePanel.setText("Registro de Personas");
 
         javax.swing.GroupLayout panelSuperiorLayout = new javax.swing.GroupLayout(panelSuperior);
         panelSuperior.setLayout(panelSuperiorLayout);
@@ -137,25 +139,25 @@ public class ConsultasAerolineas extends javax.swing.JPanel implements ShowObjec
         panelCentral.setMaximumSize(new java.awt.Dimension(900, 550));
         panelCentral.setMinimumSize(new java.awt.Dimension(900, 550));
 
-        tblAirlines.setBackground(new java.awt.Color(65, 70, 72));
-        tblAirlines.setForeground(java.awt.Color.white);
-        tblAirlines.setModel(new javax.swing.table.DefaultTableModel(
+        tblPersonas.setBackground(new java.awt.Color(65, 70, 72));
+        tblPersonas.setForeground(java.awt.Color.white);
+        tblPersonas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id Aerolinea", "Nombre Aerolinea"
+                "Id Personas", "Nombre ", "Primer Apellido", "Segundo Apellido", "Contraseña", "Tipo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblAirlines);
+        jScrollPane1.setViewportView(tblPersonas);
 
         javax.swing.GroupLayout panelCentralLayout = new javax.swing.GroupLayout(panelCentral);
         panelCentral.setLayout(panelCentralLayout);
@@ -184,21 +186,25 @@ public class ConsultasAerolineas extends javax.swing.JPanel implements ShowObjec
     private javax.swing.JLabel jlTitlePanel;
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelSuperior;
-    private javax.swing.JTable tblAirlines;
+    private javax.swing.JTable tblPersonas;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void ShowObjects() {
 
         try {
-            per.getListaAerolineas().forEach( // se llama la lista donde estan los objetos
-                    p -> { //se implementa la lamba donde p es el objeto 
-                        DefaultTableModel modelo = (DefaultTableModel) tblAirlines.getModel(); // se crea un modelo para la tabla
-                        Object[] colum = new Object[2];// se asigna un vector con la cantidad de colummas que tiene la tabla
-                        colum[0] = p.getIdAirline(); // se asignan los parametros de los objetos a las columnas
-                        colum[1] = p.getNameAirline();
+            per.getListaPersonas().forEach(p -> { //se implementa la lamba donde p es el objeto 
+                        DefaultTableModel modelo = (DefaultTableModel) tblPersonas.getModel(); // se crea un modelo para la tabla
+                        Object[] colum = new Object[6];// se asigna un vector con la cantidad de colummas que tiene la tabla
+                        colum[0] = p.getId(); // se asignan los parametros de los objetos a las columnas
+                        colum[1] = p.getName();
+                        colum[2] = p.getApellido1();
+                        colum[3] = p.getApellido2();
+                        colum[4] = p.getPassword();
+                        colum[5] = p.getTipo();
+                        
                         modelo.addRow(colum); // se agregan las columnas(el objeto) a una fila de la tabla 
-                        tblAirlines.setModel(modelo);// se agrega el modelo a la tabla
+                        tblPersonas.setModel(modelo);// se agrega el modelo a la tabla
                     }
             );
 
@@ -213,7 +219,7 @@ public class ConsultasAerolineas extends javax.swing.JPanel implements ShowObjec
 
     }                 
 
-    private ControladorConsultaAero ControladorConsultaAero(ConsultasAerolineas aThis, Persistencia per) {
+    private ControladorConsultaAero ControladorConsultaAero(ConsultasPersonas aThis, Persistencia per) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

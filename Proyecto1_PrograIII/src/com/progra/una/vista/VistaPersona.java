@@ -12,6 +12,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,6 +31,7 @@ public class VistaPersona extends javax.swing.JPanel {
     private JPanel panTexto;
     private JPanel panRadioBotones;
     private JPanel panBotones;
+    private ButtonGroup Tipo;
 
     private JButton btnVerUsuarios;
     private JButton btnCancelar;
@@ -57,8 +59,10 @@ public class VistaPersona extends javax.swing.JPanel {
     private JLabel lblTipoDeUsuario;
     private JLabel lblContra1;
     private JLabel lblContra2;
+    private Persistencia per;
 
     public VistaPersona(JPanel principal, Persistencia per) {
+        this.per = per;
         this.InitComponents();
         this.principal = principal;
         this.c = new ControladorPersona(p, this);
@@ -119,7 +123,7 @@ public class VistaPersona extends javax.swing.JPanel {
             panBotones.setMinimumSize(new Dimension(900, 100));
             panBotones.setMaximumSize(new Dimension(900, 100));
 
-            lblRegistro = new JLabel("Registro", JLabel.CENTER);
+            lblRegistro = new JLabel("Registro de usuarios", JLabel.CENTER);
             lblRegistro.setForeground(new Color(35, 49, 67));
             lblRegistro.setFont(new Font("Lucida Grande", 0, 50));
             lblRegistro.setForeground(Color.white);
@@ -292,6 +296,12 @@ public class VistaPersona extends javax.swing.JPanel {
             a.gridy = 4;
             a.gridwidth = 1;
             panRadioBotones.add(jrbUsuario, a);
+            
+            Tipo = new ButtonGroup();
+            Tipo.add(jrbAdministradorTI);
+            Tipo.add(jrbAdministradorAero);
+            Tipo.add(jrbAdministradorRes);
+            Tipo.add(jrbUsuario);
 
             principal.add(panTexto, BorderLayout.CENTER);
             principal.add(panTitulo, BorderLayout.PAGE_START);
@@ -308,6 +318,9 @@ public class VistaPersona extends javax.swing.JPanel {
 
     public ControladorPersona getControlerP() {
         return c;
+    }
+    public JPanel getPrincipal(){
+        return principal;
     }
 
     public JButton getBtnVerUsuarios() {
@@ -345,5 +358,28 @@ public class VistaPersona extends javax.swing.JPanel {
     public JPasswordField getPwdContra2() {
         return pwdContra2;
     }
+    public String getTipoTexto(){
+
+        String s = new String();
+        if(jrbAdministradorTI.isSelected()){s = jrbAdministradorTI.getText();}
+        if(jrbAdministradorAero.isSelected()){s = jrbAdministradorAero.getText();}
+        if(jrbAdministradorRes.isSelected()){s = jrbAdministradorRes.getText();}
+        if(jrbUsuario.isSelected()){s = jrbUsuario.getText();}
+        return s;
+    }
+    public JRadioButton getTipoBoton(){
+        if(p.getTipo().equals(jrbAdministradorTI.getText())){return jrbAdministradorTI ;}
+        if(p.getTipo().equals(jrbAdministradorAero.getText())){return jrbAdministradorAero ;}
+        if(p.getTipo().equals(jrbAdministradorRes.getText())){return jrbAdministradorRes ;}
+        if(p.getTipo().equals(jrbUsuario.getText())){return jrbUsuario ;}
+        return null;
+    }
+    public ButtonGroup getTipoBG(){
+        return Tipo;
+    }
+    public Persistencia getPer(){
+        return per;
+    }
+  
 
 }

@@ -58,13 +58,14 @@ public class JPanelButtonsAdmin extends javax.swing.JPanel {
         btnAdminUser = new javax.swing.JButton();
         PanelEdit = new javax.swing.JPanel();
         btnEliminar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         lbPanelModi = new javax.swing.JLabel();
+        btnModificar = new javax.swing.JButton();
 
         setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color2"));
         setForeground(new java.awt.Color(60, 63, 65));
         setMaximumSize(new java.awt.Dimension(300, 700));
+        setMinimumSize(new java.awt.Dimension(300, 700));
         setPreferredSize(new java.awt.Dimension(300, 700));
 
         jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color2"));
@@ -105,23 +106,28 @@ public class JPanelButtonsAdmin extends javax.swing.JPanel {
         lbPaneName.getAccessibleContext().setAccessibleName("lbPanelPrincipal");
 
         PanelAdmin.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color2"));
+        PanelAdmin.setMaximumSize(new java.awt.Dimension(267, 316));
+        PanelAdmin.setMinimumSize(new java.awt.Dimension(267, 316));
 
-        btnRegistro.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color1"));
-        btnRegistro.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color2"));
+        btnRegistro.setBackground(java.awt.SystemColor.activeCaptionBorder);
+        btnRegistro.setForeground(java.awt.Color.white);
         btnRegistro.setText("Registro de Actividad");
+        btnRegistro.setMaximumSize(new java.awt.Dimension(76, 32));
+        btnRegistro.setMinimumSize(new java.awt.Dimension(76, 32));
+        btnRegistro.setPreferredSize(new java.awt.Dimension(76, 32));
         btnRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistroActionPerformed(evt);
             }
         });
 
-        btnAdminAerolinea.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color1"));
-        btnAdminAerolinea.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color2"));
+        btnAdminAerolinea.setBackground(java.awt.SystemColor.activeCaptionBorder);
+        btnAdminAerolinea.setForeground(java.awt.Color.white);
         btnAdminAerolinea.setText("Administrar Aerolinas");
         btnAdminAerolinea.setToolTipText("");
-        btnAdminAerolinea.setMaximumSize(new java.awt.Dimension(164, 32));
-        btnAdminAerolinea.setMinimumSize(new java.awt.Dimension(164, 32));
-        btnAdminAerolinea.setPreferredSize(new java.awt.Dimension(164, 32));
+        btnAdminAerolinea.setMaximumSize(new java.awt.Dimension(76, 32));
+        btnAdminAerolinea.setMinimumSize(new java.awt.Dimension(76, 32));
+        btnAdminAerolinea.setPreferredSize(new java.awt.Dimension(76, 32));
         btnAdminAerolinea.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAdminAerolineaMouseClicked(evt);
@@ -133,24 +139,24 @@ public class JPanelButtonsAdmin extends javax.swing.JPanel {
             }
         });
 
-        btnAdminVuelos.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color1"));
-        btnAdminVuelos.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color2"));
+        btnAdminVuelos.setBackground(java.awt.SystemColor.activeCaptionBorder);
+        btnAdminVuelos.setForeground(java.awt.Color.white);
         btnAdminVuelos.setText("Administrar Vuelos");
-        btnAdminVuelos.setMaximumSize(new java.awt.Dimension(164, 32));
-        btnAdminVuelos.setMinimumSize(new java.awt.Dimension(164, 32));
-        btnAdminVuelos.setPreferredSize(new java.awt.Dimension(164, 32));
+        btnAdminVuelos.setMaximumSize(new java.awt.Dimension(76, 32));
+        btnAdminVuelos.setMinimumSize(new java.awt.Dimension(76, 32));
+        btnAdminVuelos.setPreferredSize(new java.awt.Dimension(76, 32));
         btnAdminVuelos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdminVuelosActionPerformed(evt);
             }
         });
 
-        btnAdminReserv.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color1"));
-        btnAdminReserv.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color2"));
+        btnAdminReserv.setBackground(java.awt.SystemColor.activeCaptionBorder);
+        btnAdminReserv.setForeground(java.awt.Color.white);
         btnAdminReserv.setText("Administrar Reservaciones");
-        btnAdminReserv.setMaximumSize(new java.awt.Dimension(164, 32));
-        btnAdminReserv.setMinimumSize(new java.awt.Dimension(164, 32));
-        btnAdminReserv.setPreferredSize(new java.awt.Dimension(164, 32));
+        btnAdminReserv.setMaximumSize(new java.awt.Dimension(76, 32));
+        btnAdminReserv.setMinimumSize(new java.awt.Dimension(76, 32));
+        btnAdminReserv.setPreferredSize(new java.awt.Dimension(76, 32));
         btnAdminReserv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdminReservActionPerformed(evt);
@@ -160,12 +166,12 @@ public class JPanelButtonsAdmin extends javax.swing.JPanel {
         lbAdminPanel.setForeground(new java.awt.Color(243, 243, 243));
         lbAdminPanel.setText("Panel de Administración");
 
-        btnAdminUser.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color1"));
-        btnAdminUser.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color2"));
+        btnAdminUser.setBackground(java.awt.SystemColor.activeCaptionBorder);
+        btnAdminUser.setForeground(java.awt.Color.white);
         btnAdminUser.setText("Administrar Usuarios");
-        btnAdminUser.setMaximumSize(new java.awt.Dimension(164, 32));
-        btnAdminUser.setMinimumSize(new java.awt.Dimension(164, 32));
-        btnAdminUser.setPreferredSize(new java.awt.Dimension(164, 32));
+        btnAdminUser.setMaximumSize(new java.awt.Dimension(76, 32));
+        btnAdminUser.setMinimumSize(new java.awt.Dimension(76, 32));
+        btnAdminUser.setPreferredSize(new java.awt.Dimension(76, 32));
         btnAdminUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdminUserActionPerformed(evt);
@@ -176,19 +182,19 @@ public class JPanelButtonsAdmin extends javax.swing.JPanel {
         PanelAdmin.setLayout(PanelAdminLayout);
         PanelAdminLayout.setHorizontalGroup(
             PanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelAdminLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnAdminVuelos, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                    .addComponent(btnAdminReserv, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                    .addComponent(btnAdminUser, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                    .addComponent(btnRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                    .addComponent(btnAdminAerolinea, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAdminLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addComponent(lbAdminPanel)
                 .addGap(54, 54, 54))
+            .addGroup(PanelAdminLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(PanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAdminVuelos, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAdminUser, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRegistro, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAdminAerolinea, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAdminReserv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         PanelAdminLayout.setVerticalGroup(
             PanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,8 +222,8 @@ public class JPanelButtonsAdmin extends javax.swing.JPanel {
 
         PanelEdit.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color2"));
 
-        btnEliminar.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color1"));
-        btnEliminar.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color2"));
+        btnEliminar.setBackground(java.awt.SystemColor.activeCaptionBorder);
+        btnEliminar.setForeground(java.awt.Color.white);
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,18 +231,8 @@ public class JPanelButtonsAdmin extends javax.swing.JPanel {
             }
         });
 
-        btnModificar.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color1"));
-        btnModificar.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color2"));
-        btnModificar.setText("Modificar");
-        btnModificar.setPreferredSize(new java.awt.Dimension(81, 32));
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-
-        btnGuardar.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color1"));
-        btnGuardar.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color2"));
+        btnGuardar.setBackground(java.awt.SystemColor.activeCaptionBorder);
+        btnGuardar.setForeground(java.awt.Color.white);
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,6 +244,16 @@ public class JPanelButtonsAdmin extends javax.swing.JPanel {
         lbPanelModi.setText("Panel de Modificación");
         lbPanelModi.setToolTipText("");
 
+        btnModificar.setBackground(java.awt.SystemColor.activeCaptionBorder);
+        btnModificar.setForeground(java.awt.Color.white);
+        btnModificar.setText("Modificar");
+        btnModificar.setPreferredSize(new java.awt.Dimension(81, 32));
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelEditLayout = new javax.swing.GroupLayout(PanelEdit);
         PanelEdit.setLayout(PanelEditLayout);
         PanelEditLayout.setHorizontalGroup(
@@ -257,9 +263,9 @@ public class JPanelButtonsAdmin extends javax.swing.JPanel {
                     .addGroup(PanelEditLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(lbPanelModi))
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         PanelEditLayout.setVerticalGroup(
@@ -269,17 +275,17 @@ public class JPanelButtonsAdmin extends javax.swing.JPanel {
                 .addComponent(lbPanelModi)
                 .addGap(18, 18, 18)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addGap(4, 4, 4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
+                .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         btnEliminar.getAccessibleContext().setAccessibleName("btnEliminar");
-        btnModificar.getAccessibleContext().setAccessibleName("btnModificar");
         btnGuardar.getAccessibleContext().setAccessibleName("btnNuevo");
         lbPanelModi.getAccessibleContext().setAccessibleName("lbPanelModificación");
+        btnModificar.getAccessibleContext().setAccessibleName("btnModificar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -287,29 +293,29 @@ public class JPanelButtonsAdmin extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(PanelTitles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(PanelEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(PanelAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(PanelTitles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PanelAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(PanelTitles, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(PanelAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addGap(86, 86, 86))
         );
 
         PanelEdit.getAccessibleContext().setAccessibleName("");

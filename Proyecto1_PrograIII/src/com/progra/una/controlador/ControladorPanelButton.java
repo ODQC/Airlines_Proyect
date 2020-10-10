@@ -97,7 +97,7 @@ public class ControladorPanelButton implements Initlisteners{
                 principal.add("vistaPersona", vP);
                 CardLayout card = (CardLayout) principal.getLayout();
                 card.next(principal);
-                 curPanel = "AdminUser";
+                curPanel = "AdminUser";
             }
         });
          this.v.getBtnRegistro().addActionListener(new ActionListener() {
@@ -120,7 +120,8 @@ public class ControladorPanelButton implements Initlisteners{
               if(curPanel.equals("AdminAerolineas")){vA.getControlerA().Add();}
               else if(curPanel.equals("AdminVuelos")){vV.getControlerV().Add();}
               //else if(curPanel.equals("AdminReserv")){vR.getControlerR().Add();}
-              else if(curPanel.equals("AdminReserv")){vP.getControlerP().Add();}
+              //else if(curPanel.equals("AdminReserv")){vR.getControlerR().Add();}
+              else if(curPanel.equals("AdminUser")){vP.getControlerP().Add();}
               else if(curPanel.equals("Background")){JOptionPane.showMessageDialog(null, "\nPrimero seleccione el serivicio que quiere modificar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);}
             }
         });

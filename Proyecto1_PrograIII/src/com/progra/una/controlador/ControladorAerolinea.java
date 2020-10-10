@@ -158,9 +158,9 @@ public class ControladorAerolinea implements Identificator, Cancelar, Mantenimie
     }
 
     @Override
-    public void CleanForms() {
-        v.getTxtCodigoAerolinea().setText("");
+    public void CleanForms() {        v.getTxtCodigoAerolinea().setText("");
         v.getTxtNombreAerolinea().setText("");
+
     }
 
     

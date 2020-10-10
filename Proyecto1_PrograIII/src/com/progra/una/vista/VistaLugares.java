@@ -247,15 +247,14 @@ public class VistaLugares extends javax.swing.JPanel {
 
         Filas.setBackground(new java.awt.Color(65, 81, 109));
         Filas.setForeground(java.awt.Color.gray);
-        Filas.setMaximumSize(new java.awt.Dimension(900, 550));
-        Filas.setMinimumSize(new java.awt.Dimension(900, 550));
+        Filas.setMaximumSize(new java.awt.Dimension(880, 550));
+        Filas.setMinimumSize(new java.awt.Dimension(880, 550));
 
         Seccion1.setBackground(java.awt.Color.orange);
         Seccion1.setForeground(java.awt.SystemColor.activeCaptionBorder);
         Seccion1.setMaximumSize(new java.awt.Dimension(700, 160));
         Seccion1.setMinimumSize(new java.awt.Dimension(700, 160));
         Seccion1.setPreferredSize(new java.awt.Dimension(700, 160));
-        Seccion1.setSize(new java.awt.Dimension(700, 160));
         Seccion1.setLayout(new java.awt.GridLayout(3, 10));
 
         btnA1.setBackground(java.awt.Color.orange);
@@ -483,7 +482,6 @@ public class VistaLugares extends javax.swing.JPanel {
         Seccion2.setMaximumSize(new java.awt.Dimension(700, 160));
         Seccion2.setMinimumSize(new java.awt.Dimension(700, 160));
         Seccion2.setPreferredSize(new java.awt.Dimension(700, 160));
-        Seccion2.setSize(new java.awt.Dimension(700, 160));
         Seccion2.setLayout(new java.awt.GridLayout(3, 10));
 
         btnD1.setBackground(new java.awt.Color(0, 204, 204));
@@ -702,7 +700,6 @@ public class VistaLugares extends javax.swing.JPanel {
         Seccion3.setMaximumSize(new java.awt.Dimension(700, 160));
         Seccion3.setMinimumSize(new java.awt.Dimension(700, 160));
         Seccion3.setPreferredSize(new java.awt.Dimension(700, 160));
-        Seccion3.setSize(new java.awt.Dimension(700, 160));
         Seccion3.setLayout(new java.awt.GridLayout(3, 10));
 
         btnG1.setBackground(java.awt.SystemColor.controlHighlight);
@@ -958,7 +955,6 @@ public class VistaLugares extends javax.swing.JPanel {
         jLabel1.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
         jLabel1.setText("Fila A");
-        jLabel1.setSize(new java.awt.Dimension(35, 16));
 
         jLabel2.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel2.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
@@ -966,12 +962,10 @@ public class VistaLugares extends javax.swing.JPanel {
         jLabel2.setMaximumSize(new java.awt.Dimension(35, 16));
         jLabel2.setMinimumSize(new java.awt.Dimension(35, 16));
         jLabel2.setPreferredSize(new java.awt.Dimension(35, 16));
-        jLabel2.setSize(new java.awt.Dimension(35, 16));
 
         jLabel3.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel3.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
         jLabel3.setText("Fila C");
-        jLabel3.setSize(new java.awt.Dimension(35, 16));
 
         jLabel4.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel4.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
@@ -979,7 +973,6 @@ public class VistaLugares extends javax.swing.JPanel {
         jLabel4.setMaximumSize(new java.awt.Dimension(35, 16));
         jLabel4.setMinimumSize(new java.awt.Dimension(35, 16));
         jLabel4.setPreferredSize(new java.awt.Dimension(35, 16));
-        jLabel4.setSize(new java.awt.Dimension(35, 16));
 
         jLabel5.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel5.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
@@ -987,7 +980,6 @@ public class VistaLugares extends javax.swing.JPanel {
         jLabel5.setMaximumSize(new java.awt.Dimension(35, 16));
         jLabel5.setMinimumSize(new java.awt.Dimension(35, 16));
         jLabel5.setPreferredSize(new java.awt.Dimension(35, 16));
-        jLabel5.setSize(new java.awt.Dimension(35, 16));
 
         jLabel6.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel6.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
@@ -995,12 +987,10 @@ public class VistaLugares extends javax.swing.JPanel {
         jLabel6.setMaximumSize(new java.awt.Dimension(35, 16));
         jLabel6.setMinimumSize(new java.awt.Dimension(35, 16));
         jLabel6.setPreferredSize(new java.awt.Dimension(35, 16));
-        jLabel6.setSize(new java.awt.Dimension(35, 16));
 
         jLabel7.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel7.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
         jLabel7.setText("Fila G");
-        jLabel7.setSize(new java.awt.Dimension(35, 16));
 
         jLabel8.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel8.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
@@ -1008,7 +998,6 @@ public class VistaLugares extends javax.swing.JPanel {
         jLabel8.setMaximumSize(new java.awt.Dimension(35, 16));
         jLabel8.setMinimumSize(new java.awt.Dimension(35, 16));
         jLabel8.setPreferredSize(new java.awt.Dimension(35, 16));
-        jLabel8.setSize(new java.awt.Dimension(35, 16));
 
         jLabel9.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel9.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
@@ -1016,7 +1005,6 @@ public class VistaLugares extends javax.swing.JPanel {
         jLabel9.setMaximumSize(new java.awt.Dimension(35, 16));
         jLabel9.setMinimumSize(new java.awt.Dimension(35, 16));
         jLabel9.setPreferredSize(new java.awt.Dimension(35, 16));
-        jLabel9.setSize(new java.awt.Dimension(35, 16));
 
         javax.swing.GroupLayout jPanelLabelsLayout = new javax.swing.GroupLayout(jPanelLabels);
         jPanelLabels.setLayout(jPanelLabelsLayout);
@@ -1071,7 +1059,6 @@ public class VistaLugares extends javax.swing.JPanel {
         jLabel18.setMaximumSize(new java.awt.Dimension(35, 16));
         jLabel18.setMinimumSize(new java.awt.Dimension(35, 16));
         jLabel18.setPreferredSize(new java.awt.Dimension(35, 16));
-        jLabel18.setSize(new java.awt.Dimension(35, 16));
 
         javax.swing.GroupLayout jPanelLabels1Layout = new javax.swing.GroupLayout(jPanelLabels1);
         jPanelLabels1.setLayout(jPanelLabels1Layout);
@@ -1099,7 +1086,7 @@ public class VistaLugares extends javax.swing.JPanel {
                 .addComponent(jPanelLabels, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelLabels1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(FilasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Seccion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Seccion2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
