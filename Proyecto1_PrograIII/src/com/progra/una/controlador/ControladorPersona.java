@@ -9,6 +9,7 @@ import com.progra.una.controlador.InterfacesControl.Cancelar;
 import com.progra.una.controlador.InterfacesControl.CleanForm;
 import com.progra.una.controlador.InterfacesControl.Initlisteners;
 import com.progra.una.modelo.Aerolinea;
+import com.progra.una.modelo.Interfaces.ConvertirPwd;
 
 import com.progra.una.modelo.Interfaces.Mantenimiento;
 import com.progra.una.modelo.Interfaces.Report;
@@ -32,7 +33,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author oscardanielquesadacalderon
  */
-public class ControladorPersona implements Mantenimiento, Cancelar, CleanForm, Initlisteners, Report{
+public class ControladorPersona implements Mantenimiento, Cancelar, CleanForm, Initlisteners, Report, ConvertirPwd{
 private Persona m;
 private VistaPersona v;
 private String descripcion;
@@ -44,12 +45,7 @@ private ConsultasPersonas cP;
         InitListeners();
     }    
     
-    public String Convertir(JPasswordField pass){
-        char[] con = pass.getPassword();
-        String s = new String(con);
-        return s;
-    }
-    
+        
     @Override
     public void Add() {
     try {
@@ -102,9 +98,8 @@ private ConsultasPersonas cP;
                             card.previous(cP.getPanelPrincipal());
                             
                         } else {
-                             DefaultTableModel modelo=(DefaultTableModel) cP.getTblPersonas().getModel();      
-                             cP.getTblPersonas().remove(i);
-                             cP.ShowObjects();                  
+                            
+                                     
                         }
 
             } catch (NullPointerException ex) {
