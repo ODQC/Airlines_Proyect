@@ -14,6 +14,7 @@ import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -241,6 +242,10 @@ public class ConsultasPersonas extends javax.swing.JPanel implements ShowObjects
 
     public JButton getBtnCancelar() {
         return btnCancelar;
+    }
+
+    public JTable getTblPersonas() {
+        return tblPersonas;
     }
     
 }

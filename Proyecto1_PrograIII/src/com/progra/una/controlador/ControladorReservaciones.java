@@ -45,7 +45,7 @@ public class ControladorReservaciones implements Cancelar, Report, Initlisteners
     
     public void LoadFlies() {
         try {
-            v.gettVuelos().getTblVuelos().removeAll();
+            
             v.getPer().getListaVuelos().forEach( // se llama la lista donde estan los objetos
                     p -> { //se implementa la lamba donde p es el objeto 
                         DefaultTableModel modelo = (DefaultTableModel) v.gettVuelos().getTblVuelos().getModel(); // se crea un modelo para la tabla

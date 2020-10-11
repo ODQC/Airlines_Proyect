@@ -109,6 +109,7 @@ public class ControladorAerolinea implements Identificator, Cancelar, Mantenimie
                 descripcion1 = "Se Eliminó la Aerolinea "+v.getTxtCodigoAerolinea().getText();
                 this.AddReport(descripcion1,"207460988",v.getPer());
                 JOptionPane.showMessageDialog(null, "Se eliminó elemento correctamente", "Transacción erronea", JOptionPane.WARNING_MESSAGE);
+                cA.getC().ShowObjects();
                 break;
             }
         }

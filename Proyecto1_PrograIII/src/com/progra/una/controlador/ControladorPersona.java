@@ -26,6 +26,7 @@ import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -81,17 +82,30 @@ private ConsultasPersonas cP;
         } else {
             try {
                 int size = v.getPer().getListaPersonas().size();
+                int i;
                 String id = JOptionPane.showInputDialog("Ingrese el Id de la Aerolinea \n" + "que desea Eliminar:");
-                for (int i = 0; i < size; i++) {
+                for (i = 0; i < size; i++) {
 
                     if (v.getPer().getListaPersonas().get(i).getId().equals(id)) {
                         v.getPer().getListaPersonas().remove(i);
                         descripcion = "Se Eliminó la Persona " + v.getTxtId().getText();
                         this.AddReport(descripcion, "207460988", v.getPer());
                         JOptionPane.showMessageDialog(null, "Se eliminó la persona correctamente", "Transacción erronea", JOptionPane.WARNING_MESSAGE);
+                       
                         break;
                     }
                 }
+                 if (v.getPer().getListaPersonas().isEmpty()) {
+                            JOptionPane.showMessageDialog(null, "\nNo hay más elementos que mostrar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
+                            cP.getPanelPrincipal().remove(cP);
+                            CardLayout card = (CardLayout) cP.getPanelPrincipal().getLayout();
+                            card.previous(cP.getPanelPrincipal());
+                            
+                        } else {
+                             DefaultTableModel modelo=(DefaultTableModel) cP.getTblPersonas().getModel();      
+                             cP.getTblPersonas().remove(i);
+                             cP.ShowObjects();                  
+                        }
 
             } catch (NullPointerException ex) {
                 JOptionPane.showMessageDialog(null, ex + " " + "\nNo hay más elementos que mostrar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);

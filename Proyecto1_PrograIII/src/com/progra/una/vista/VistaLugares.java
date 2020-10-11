@@ -14,6 +14,7 @@ import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -51,6 +52,7 @@ public class VistaLugares extends javax.swing.JPanel {
         btnReservar = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        txtListPlaceSelec = new javax.swing.JTextField();
         panelCentral = new javax.swing.JPanel();
         Filas = new javax.swing.JPanel();
         Seccion1 = new javax.swing.JPanel();
@@ -116,20 +118,21 @@ public class VistaLugares extends javax.swing.JPanel {
         btnAtras.setMaximumSize(new java.awt.Dimension(84, 32));
         btnAtras.setMinimumSize(new java.awt.Dimension(84, 32));
         btnAtras.setPreferredSize(new java.awt.Dimension(84, 32));
-        btnAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtrasActionPerformed(evt);
-            }
-        });
 
         btnCancelar.setText("Cancelar");
+
+        txtListPlaceSelec.setEditable(false);
+        txtListPlaceSelec.setEnabled(false);
+        txtListPlaceSelec.setMaximumSize(new java.awt.Dimension(14, 24));
 
         javax.swing.GroupLayout PanelInferiorLayout = new javax.swing.GroupLayout(PanelInferior);
         PanelInferior.setLayout(PanelInferiorLayout);
         PanelInferiorLayout.setHorizontalGroup(
             PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInferiorLayout.createSequentialGroup()
-                .addContainerGap(531, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
+                .addComponent(txtListPlaceSelec, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(btnCancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -144,7 +147,8 @@ public class VistaLugares extends javax.swing.JPanel {
                 .addGroup(PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReservar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnCancelar)
+                    .addComponent(txtListPlaceSelec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
@@ -160,20 +164,17 @@ public class VistaLugares extends javax.swing.JPanel {
         Filas.setMaximumSize(new java.awt.Dimension(880, 550));
         Filas.setMinimumSize(new java.awt.Dimension(880, 550));
 
-        Seccion1.setBackground(java.awt.Color.orange);
         Seccion1.setForeground(java.awt.SystemColor.activeCaptionBorder);
         Seccion1.setMaximumSize(new java.awt.Dimension(700, 160));
         Seccion1.setMinimumSize(new java.awt.Dimension(700, 160));
         Seccion1.setPreferredSize(new java.awt.Dimension(700, 160));
         Seccion1.setLayout(new java.awt.GridLayout(3, 10));
 
-        Seccion2.setBackground(new java.awt.Color(255, 51, 51));
         Seccion2.setMaximumSize(new java.awt.Dimension(700, 160));
         Seccion2.setMinimumSize(new java.awt.Dimension(700, 160));
         Seccion2.setPreferredSize(new java.awt.Dimension(700, 160));
         Seccion2.setLayout(new java.awt.GridLayout(3, 10));
 
-        Seccion3.setBackground(new java.awt.Color(0, 0, 255));
         Seccion3.setMaximumSize(new java.awt.Dimension(700, 160));
         Seccion3.setMinimumSize(new java.awt.Dimension(700, 160));
         Seccion3.setPreferredSize(new java.awt.Dimension(700, 160));
@@ -346,10 +347,6 @@ public class VistaLugares extends javax.swing.JPanel {
         add(panelCentral, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAtrasActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Filas;
@@ -375,6 +372,7 @@ public class VistaLugares extends javax.swing.JPanel {
     private javax.swing.JLabel jlTitlePanel;
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelSuperior;
+    private javax.swing.JTextField txtListPlaceSelec;
     // End of variables declaration//GEN-END:variables
 
     public ControladorLugar getControlerL() {
@@ -442,6 +440,10 @@ public class VistaLugares extends javax.swing.JPanel {
 
     public ControladorLugar getC() {
         return c;
+    }
+
+    public JTextField getTxtListPlaceSelec() {
+        return txtListPlaceSelec;
     }
 
 }

@@ -142,7 +142,8 @@ public class ControladorPanelButton implements Initlisteners{
                if(curPanel.equals("AdminAerolineas")){vA.getControlerA().Delete();}
               else if(curPanel.equals("AdminVuelos")){vV.getControlerV().Delete();}
               //else if(curPanel.equals("AdminReserv")){vR.getControlerR().Delete();}
-              else if(curPanel.equals("AdminReserv")){vP.getControlerP().Delete();}
+              else if(curPanel.equals("AdminReserv")){vR.getControlerR();}
+               else if(curPanel.equals("AdminUser")){vP.getControlerP().Delete();}
               else if(curPanel.equals("Background")){JOptionPane.showMessageDialog(null, "\nPrimero seleccione el serivicio que quiere modificar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);}
               
             }

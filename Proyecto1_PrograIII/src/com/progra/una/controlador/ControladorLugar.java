@@ -38,6 +38,7 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners{
         this.m = m;
         this.v = v;
         this.InitListeners();
+        this.PlaceSelected = new ArrayList<Lugar>();
         
     }
       
@@ -102,17 +103,18 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners{
             String nom;
             try {
                 nom = fly.getListPlace().get(i).getIdPlace();
-                JButton place = new JButton();                
+                JButton place = new JButton();
                 place.setText(nom);
                 place.setMaximumSize(new java.awt.Dimension(60, 60));
                 place.setMinimumSize(new java.awt.Dimension(60, 60));
                 place.setPreferredSize(new java.awt.Dimension(60, 60));
-                place.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        
-                       
+
+                place.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        ButtonSelected(place, fly, evt);
                     }
                 });
+
                 if (fly.getListPlace().get(i).getStatusPlace().equals("Reservado")) {
                     place.setBackground(java.awt.Color.RED);
                     place.setEnabled(false);
@@ -121,7 +123,7 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners{
                         place.setBackground(java.awt.Color.ORANGE);
                         v.getSeccion1().add(place);
                     } else if (30 <= i && i <= 59) {
-                        place.setBackground(java.awt.Color.CYAN);
+                        place.setBackground(java.awt.Color.ORANGE);
                         v.getSeccion2().add(place);
                     } else if (60 <= i && i <= 89) {
                         place.setBackground(java.awt.Color.BLUE);
@@ -136,20 +138,39 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners{
         }
     }
 
-    public void ButtonSelected(JButton B, Vuelo fly) {
-        fly.getListPlace().forEach(
-                p -> {
-                    if (p.getIdPlace().equals(B.getText())&& !PlaceSelected.contains(p)) {
-                        if (p.getStatusPlace().equals("Disponibe")) {
-                            PlaceSelected.add(p);
-                        }
-                    }else {
-                        PlaceSelected.remove(p);
-                        //PlaceSelected.re
+    public void ButtonSelected(JButton B, Vuelo fly, java.awt.event.MouseEvent evt) {
+        // if (B.isSelected()) {
+        try {
+            int i;
+            for (i = 0; i < fly.getListPlace().size(); i++) {
+
+                if (fly.getListPlace().get(i).getIdPlace().equals(B.getText())) {
+                    if (fly.getListPlace().get(i).getStatusPlace().equals("Disponibe")) {
+                        fly.getListPlace().get(i).setStatusPlace("Reservado");
+                        B.repaint();
+                        B.setBackground(java.awt.Color.RED);
+                        PlaceSelected.add(fly.getListPlace().get(i));
+                        v.getTxtListPlaceSelec().setText( PlaceSelected.toString());
+                        break;
                     }
-                    
+                } else {
+                  for (int j = 0; j < PlaceSelected.size(); j++) {
+                        if (PlaceSelected.get(j).getIdPlace().equals(B.getText())) {
+                            PlaceSelected.remove(j);
+                            fly.getListPlace().get(i).setStatusPlace("Disponible");
+                            B.setBackground(java.awt.Color.GREEN);
+                            v.getTxtListPlaceSelec().setText( PlaceSelected.toString());
+                            break;
+                        }
+                    }
+
                 }
-        );
-        
+            }
+           
+        } catch (Exception e) {
+            System.err.println(e);
+        }
     }
+  
+
 }

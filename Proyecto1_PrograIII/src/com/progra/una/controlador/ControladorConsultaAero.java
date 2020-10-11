@@ -8,18 +8,20 @@ package com.progra.una.controlador;
 import com.progra.una.controlador.InterfacesControl.Cancelar;
 import com.progra.una.controlador.InterfacesControl.Initlisteners;
 import com.progra.una.modelo.Interfaces.FindObject;
+import com.progra.una.modelo.Interfaces.ShowObjects;
 import com.progra.una.modelo.Persistencia;
 import com.progra.una.vista.ConsultasAerolineas;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author oscardanielquesadacalderon
  */
-public class ControladorConsultaAero implements FindObject,Cancelar, Initlisteners {
+public class ControladorConsultaAero implements FindObject,Cancelar, Initlisteners, ShowObjects {
     private ConsultasAerolineas v;
     private Persistencia per;
 
@@ -74,5 +76,29 @@ public class ControladorConsultaAero implements FindObject,Cancelar, Initlistene
                Cancelar();
             }
         });
+    }
+
+    @Override
+    public void ShowObjects() {
+       
+        try {
+            per.getListaAerolineas().forEach( // se llama la lista donde estan los objetos
+                    p -> { //se implementa la lamba donde p es el objeto 
+                        DefaultTableModel modelo = (DefaultTableModel) v.getTblAirlines().getModel(); // se crea un modelo para la tabla
+                        Object[] colum = new Object[2];// se asigna un vector con la cantidad de colummas que tiene la tabla
+                        colum[0] = p.getIdAirline(); // se asignan los parametros de los objetos a las columnas
+                        colum[1] = p.getNameAirline();
+                        modelo.addRow(colum); // se agregan las columnas(el objeto) a una fila de la tabla 
+                        v.getTblAirlines().setModel(modelo);// se agrega el modelo a la tabla
+                    }
+            );
+
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, ex + " " + "\nNo hay más elementos que mostrar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception ex) {
+
+            System.err.println(ex);
+
+        }
     }
 }
