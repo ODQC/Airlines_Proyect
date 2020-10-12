@@ -10,6 +10,7 @@ import com.progra.una.modelo.Persistencia;
 import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 
 /**
  *
@@ -29,6 +30,7 @@ public class ConsultasReservaciones extends javax.swing.JPanel {
         this.setLayout(new CardLayout());
         initComponents();
         this.c = new ControladorConsultaReservacion(this,per);
+        c.ShowObjects();
  
     }
 
@@ -49,7 +51,7 @@ public class ConsultasReservaciones extends javax.swing.JPanel {
         btnCancelar = new javax.swing.JButton();
         panelCentral = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbAirlines = new javax.swing.JTable();
+        tblReserv = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(65, 81, 109));
         setMaximumSize(new java.awt.Dimension(900, 700));
@@ -129,32 +131,29 @@ public class ConsultasReservaciones extends javax.swing.JPanel {
 
         panelCentral.setBackground(new java.awt.Color(65, 81, 109));
 
-        tbAirlines.setBackground(new java.awt.Color(65, 70, 72));
-        tbAirlines.setForeground(new java.awt.Color(65, 70, 72));
-        tbAirlines.setModel(new javax.swing.table.DefaultTableModel(
+        tblReserv.setBackground(new java.awt.Color(65, 70, 72));
+        tblReserv.setForeground(java.awt.Color.white);
+        tblReserv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Id Aerolinea", "Nombre Aerolinea"
+                "Id Resevacion", "Estatus", "Fecha Reserv", "id Vuelo", "Origen", "Destino", "Capacidad", "Estado Vuelo", "Id Aerolinea", "Aerolinea", "Fech Llegada", "Fecha Salidad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false, false, false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tbAirlines);
-        if (tbAirlines.getColumnModel().getColumnCount() > 0) {
-            tbAirlines.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tbAirlines.getColumnModel().getColumn(1).setResizable(false);
-            tbAirlines.getColumnModel().getColumn(1).setPreferredWidth(50);
+        jScrollPane1.setViewportView(tblReserv);
+        if (tblReserv.getColumnModel().getColumnCount() > 0) {
+            tblReserv.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tblReserv.getColumnModel().getColumn(1).setResizable(false);
+            tblReserv.getColumnModel().getColumn(1).setPreferredWidth(50);
         }
 
         javax.swing.GroupLayout panelCentralLayout = new javax.swing.GroupLayout(panelCentral);
@@ -162,15 +161,15 @@ public class ConsultasReservaciones extends javax.swing.JPanel {
         panelCentralLayout.setHorizontalGroup(
             panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCentralLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 847, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelCentralLayout.setVerticalGroup(
             panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCentralLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCentralLayout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -187,7 +186,7 @@ public class ConsultasReservaciones extends javax.swing.JPanel {
     private javax.swing.JLabel jlTitlePanel;
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelSuperior;
-    private javax.swing.JTable tbAirlines;
+    private javax.swing.JTable tblReserv;
     // End of variables declaration//GEN-END:variables
 
     public JPanel getPanelPrincipal() {
@@ -208,6 +207,10 @@ public class ConsultasReservaciones extends javax.swing.JPanel {
 
     public JButton getBtnCancelar() {
         return btnCancelar;
+    }
+
+    public JTable getTblReserv() {
+        return tblReserv;
     }
 
 }

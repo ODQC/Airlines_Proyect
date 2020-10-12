@@ -9,6 +9,7 @@ import com.progra.una.controlador.InterfacesControl.Cancelar;
 import com.progra.una.controlador.InterfacesControl.Initlisteners;
 import com.progra.una.modelo.Interfaces.FindObject;
 import com.progra.una.modelo.Persistencia;
+import com.progra.una.modelo.SingletonUsers;
 import com.progra.una.vista.ConsultasRegistros;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -23,6 +24,7 @@ public class ControladorConsultasRegistros implements Initlisteners, Cancelar,Fi
 
     private ConsultasRegistros v;
     private Persistencia per;
+    private SingletonUsers sinP;
 
     public ControladorConsultasRegistros(ConsultasRegistros v, Persistencia per) {
         this.v = v;

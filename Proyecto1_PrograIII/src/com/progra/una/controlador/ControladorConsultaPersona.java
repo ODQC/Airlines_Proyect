@@ -9,6 +9,7 @@ import com.progra.una.controlador.InterfacesControl.Cancelar;
 import com.progra.una.controlador.InterfacesControl.Initlisteners;
 import com.progra.una.modelo.Interfaces.FindObject;
 import com.progra.una.modelo.Persistencia;
+import com.progra.una.modelo.SingletonUsers;
 import com.progra.una.vista.ConsultasPersonas;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -23,6 +24,7 @@ import javax.swing.JPanel;
 public class ControladorConsultaPersona implements FindObject, Cancelar, Initlisteners{
     private Persistencia per;
     private ConsultasPersonas v;
+    private SingletonUsers sinP;
 
     public ControladorConsultaPersona(Persistencia per, ConsultasPersonas v) {
         this.per = per;

@@ -16,6 +16,7 @@ import com.progra.una.modelo.Interfaces.Report;
 import com.progra.una.modelo.Persona;
 import com.progra.una.modelo.Reporte;
 import com.progra.una.modelo.Reservacion;
+import com.progra.una.modelo.SingletonUsers;
 import com.progra.una.modelo.Vuelo;
 import com.progra.una.vista.ConsultasPersonas;
 import com.progra.una.vista.VistaPersona;
@@ -38,6 +39,7 @@ private Persona m;
 private VistaPersona v;
 private String descripcion;
 private ConsultasPersonas cP;
+private SingletonUsers sinP;
 
     public ControladorPersona(Persona m, VistaPersona v) {
         this.m = m;

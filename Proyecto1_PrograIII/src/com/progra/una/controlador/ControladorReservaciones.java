@@ -10,6 +10,7 @@ import com.progra.una.controlador.InterfacesControl.Initlisteners;
 import com.progra.una.modelo.Interfaces.Mantenimiento;
 import com.progra.una.modelo.Interfaces.Report;
 import com.progra.una.modelo.Reservacion;
+import com.progra.una.modelo.SingletonUsers;
 import com.progra.una.vista.ConsultasVuelos;
 import com.progra.una.vista.PanelBackground;
 import com.progra.una.vista.VistaLugares;
@@ -31,6 +32,7 @@ public class ControladorReservaciones implements Cancelar, Report, Initlisteners
     private VistaReservaciones v;
     private VistaLugares vL;
     private PanelBackground background;
+    private SingletonUsers sinP;
    
     public ControladorReservaciones(Reservacion m, VistaReservaciones r) {
         this.m = m;
@@ -86,7 +88,13 @@ public class ControladorReservaciones implements Cancelar, Report, Initlisteners
                     int selectedRowIndex = v.gettVuelos().getTblVuelos().getSelectedRow();
                     String idAirline = modelo.getValueAt(selectedRowIndex, 0).toString();
                     vL = new VistaLugares(v.getPrincipal(), v.getPer());
-                    vL.getC().FlySelected(idAirline);
+                    v.getPer().getListaVuelos().forEach(
+                    p->{
+                    if(p.getIdFly().equals(idAirline))
+                         vL.getC().setIdflySelected(p);
+                         vL.getC().ShowEnablePlaces(p);
+                    }); 
+                    
                     v.getPrincipal().add("aerolineaForm", vL);
                     CardLayout card = (CardLayout) v.getPrincipal().getLayout();
                     card.next(v.getPrincipal());

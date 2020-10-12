@@ -6,19 +6,22 @@
 package com.progra.una.modelo;
 
 import java.util.ArrayList;
+import javax.lang.model.SourceVersion;
 
 /**
  *
  * @author oscardanielquesadacalderon
  */
-public class Reservacion extends Lugar{
+public class Reservacion extends Vuelo{
    private String idreservation;
    private String reservStatus;
    private String reservDate;
    private ArrayList<Lugar> placeReserv;
 
-    public Reservacion(String idreservation, String reservStatus, String reservDate, String idPlace, String StatusPlace, String idFly, String source, String destination, String takeOffDate, String arrivalDate, String capacity, String stateFly, String idAirline, String nameAirline) {
-        super(idPlace, StatusPlace, idFly, source, destination, takeOffDate, arrivalDate, capacity, stateFly, idAirline, nameAirline);
+    public Reservacion(String idreservation, String reservStatus, String reservDate, String idFly, String source, 
+            String destination, String takeOffDate, String arrivalDate, String capacity,
+            String stateFly, String idAirline, String nameAirline) {
+        super(idFly, source, destination, takeOffDate, arrivalDate, capacity, stateFly, idAirline, nameAirline);
         this.idreservation = idreservation;
         this.reservStatus = reservStatus;
         this.reservDate = reservDate;
@@ -52,6 +55,8 @@ public class Reservacion extends Lugar{
     public ArrayList<Lugar> getPlaceReserv() {
         return placeReserv;
     }
+
+    
    
    
 }

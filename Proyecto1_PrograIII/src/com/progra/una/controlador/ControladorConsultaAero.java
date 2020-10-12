@@ -10,6 +10,7 @@ import com.progra.una.controlador.InterfacesControl.Initlisteners;
 import com.progra.una.modelo.Interfaces.FindObject;
 import com.progra.una.modelo.Interfaces.ShowObjects;
 import com.progra.una.modelo.Persistencia;
+import com.progra.una.modelo.SingletonUsers;
 import com.progra.una.vista.ConsultasAerolineas;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -24,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 public class ControladorConsultaAero implements FindObject,Cancelar, Initlisteners, ShowObjects {
     private ConsultasAerolineas v;
     private Persistencia per;
+    private SingletonUsers sinP;
 
     public ControladorConsultaAero(ConsultasAerolineas v, Persistencia per) {
         this.v = v;

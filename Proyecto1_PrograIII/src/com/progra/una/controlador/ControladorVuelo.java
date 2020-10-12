@@ -13,6 +13,7 @@ import com.progra.una.modelo.Interfaces.EnablePlaces;
 import com.progra.una.modelo.Interfaces.Identificator;
 import com.progra.una.modelo.Interfaces.Mantenimiento;
 import com.progra.una.modelo.Interfaces.Report;
+import com.progra.una.modelo.SingletonUsers;
 import com.progra.una.modelo.Vuelo;
 import com.progra.una.vista.ConsultasVuelos;
 import com.progra.una.vista.PanelBackground;
@@ -34,6 +35,7 @@ public class ControladorVuelo implements Identificator, Cancelar, Mantenimiento,
     private PanelBackground background;
     private String descripcion1;
     private Aerolinea airSelected;
+    private SingletonUsers sinP;
 
     public ControladorVuelo(Vuelo m, VistaVuelos v) {
         this.m = m;

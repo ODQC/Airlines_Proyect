@@ -9,6 +9,7 @@ import com.progra.una.controlador.InterfacesControl.Cancelar;
 import com.progra.una.controlador.InterfacesControl.Initlisteners;
 import com.progra.una.modelo.Interfaces.FindObject;
 import com.progra.una.modelo.Persistencia;
+import com.progra.una.modelo.SingletonUsers;
 import com.progra.una.vista.ConsultasVuelos;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -22,6 +23,7 @@ import javax.swing.JOptionPane;
 public class ControladorConsultaVuelo implements FindObject,Cancelar,Initlisteners {
     private ConsultasVuelos v;
      private Persistencia per;
+     private SingletonUsers sinP;
 
     public ControladorConsultaVuelo(ConsultasVuelos v, Persistencia per) {
         this.v = v;

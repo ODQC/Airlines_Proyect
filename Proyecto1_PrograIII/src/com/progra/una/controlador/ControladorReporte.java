@@ -7,6 +7,7 @@ package com.progra.una.controlador;
 
 import com.progra.una.controlador.InterfacesControl.Initlisteners;
 import com.progra.una.modelo.Reporte;
+import com.progra.una.modelo.SingletonUsers;
 import com.progra.una.vista.VistaReportes;
 
 /**
@@ -16,6 +17,7 @@ import com.progra.una.vista.VistaReportes;
 public class ControladorReporte implements Initlisteners{
     private Reporte m;
     private VistaReportes v;
+    private SingletonUsers sinP;
 
     public ControladorReporte(Reporte m, VistaReportes v) {
         this.m = m;

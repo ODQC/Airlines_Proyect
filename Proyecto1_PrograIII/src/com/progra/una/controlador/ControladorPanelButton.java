@@ -8,7 +8,9 @@ package com.progra.una.controlador;
 import com.progra.una.controlador.InterfacesControl.Initlisteners;
 import com.progra.una.modelo.Persistencia;
 import com.progra.una.modelo.Persona;
+import com.progra.una.modelo.SingletonUsers;
 import com.progra.una.vista.ConsultasRegistros;
+import com.progra.una.vista.ConsultasReservaciones;
 import com.progra.una.vista.JPanelButtonsAdmin;
 import com.progra.una.vista.VistaAerolineas;
 import com.progra.una.vista.VistaPersona;
@@ -31,10 +33,11 @@ public class ControladorPanelButton implements Initlisteners{
     private VistaReservaciones vR;
     private VistaPersona vP;
     private ConsultasRegistros vRe;
+    ConsultasReservaciones cR;
     private JPanel principal;
     private Persistencia per;
     private String curPanel;
-
+    private SingletonUsers sinP;
 
     public ControladorPanelButton(JPanelButtonsAdmin v,Persistencia per,JPanel p) {
         this.v = v;
@@ -44,10 +47,7 @@ public class ControladorPanelButton implements Initlisteners{
         this.curPanel = "Background";
     }
    
-    public Persona LocalUser(){
-        Persona user = new Persona("207460988","Oscar","Quesada","Calderón","Administrador","123456");
-        return user;
-    }
+  
 
     @Override
     public void InitListeners() {
@@ -114,13 +114,27 @@ public class ControladorPanelButton implements Initlisteners{
             }
             }
         });
+          this.v.getBtnRegistroReserv().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                 if (per.getListaReservaciones().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "\nNo se han agregado reresvaciones aún.", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
+                } else {
+                cR  = new ConsultasReservaciones(principal,per);
+                principal.add("ConReservaciones", cR);
+                CardLayout card = (CardLayout) principal.getLayout();
+                card.next(principal);
+                 curPanel = "ConReservaciones";
+            }
+            }
+        });
         this.v.getBtnGuardar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
               if(curPanel.equals("AdminAerolineas")){vA.getControlerA().Add();}
               else if(curPanel.equals("AdminVuelos")){vV.getControlerV().Add();}
-              //else if(curPanel.equals("AdminReserv")){vR.getControlerR().Add();}
-              //else if(curPanel.equals("AdminReserv")){vR.getControlerR().Add();}
+              //else if(curPanel.equals("ConReservaciones")){vR.getControlerR().Add();}
+             
               else if(curPanel.equals("AdminUser")){vP.getControlerP().Add();}
               else if(curPanel.equals("Background")){JOptionPane.showMessageDialog(null, "\nPrimero seleccione el serivicio que quiere modificar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);}
             }
@@ -130,7 +144,7 @@ public class ControladorPanelButton implements Initlisteners{
             public void actionPerformed(ActionEvent e) {
                 if(curPanel.equals("AdminAerolineas")){vA.getControlerA().Update();}
               else if(curPanel.equals("AdminVuelos")){vV.getControlerV().GetObject();}
-              //else if(curPanel.equals("AdminReserv")){vR.getControlerR().Update();}
+              //else if(curPanel.equals("ConReservaciones")){vR.getControlerR().Update();}
               else if(curPanel.equals("AdminReserv")){vP.getControlerP().Update();}
               else if(curPanel.equals("Background")){JOptionPane.showMessageDialog(null, "\nPrimero seleccione el serivicio que quiere modificar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);}
             
@@ -141,7 +155,7 @@ public class ControladorPanelButton implements Initlisteners{
             public void actionPerformed(ActionEvent e) {
                if(curPanel.equals("AdminAerolineas")){vA.getControlerA().Delete();}
               else if(curPanel.equals("AdminVuelos")){vV.getControlerV().Delete();}
-              //else if(curPanel.equals("AdminReserv")){vR.getControlerR().Delete();}
+              //else if(curPanel.equals("ConReservaciones")){vR.getControlerR().Delete();}
               else if(curPanel.equals("AdminReserv")){vR.getControlerR();}
                else if(curPanel.equals("AdminUser")){vP.getControlerP().Delete();}
               else if(curPanel.equals("Background")){JOptionPane.showMessageDialog(null, "\nPrimero seleccione el serivicio que quiere modificar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);}

@@ -14,6 +14,7 @@ import com.progra.una.modelo.Interfaces.FindObject;
 import com.progra.una.modelo.Interfaces.Report;
 import com.progra.una.modelo.Persistencia;
 import com.progra.una.modelo.Persona;
+import com.progra.una.modelo.SingletonUsers;
 import com.progra.una.vista.ConsultasAerolineas;
 import com.progra.una.vista.PanelBackground;
 import com.progra.una.vista.VistaLogin;
@@ -35,15 +36,20 @@ public class LoginControlador implements Initlisteners,Report,FindObject, Conver
  private VistaLogin v;
  private Persistencia m;
  private Boolean exist;
-
+ private SingletonUsers sinP;
+ 
     
 
     public LoginControlador(VistaLogin v, Persistencia m) {
         this.v = v;
         this.m = m;
         this.InitListeners();
+       
     }
-
+  public void LocalUser(String id){
+       sinP = SingletonUsers.getSin();
+       sinP.setID(id);
+    }
     @Override
     public void InitListeners() {
          this.v.getJbtnAcceder().addActionListener(new ActionListener() {
@@ -82,6 +88,7 @@ public class LoginControlador implements Initlisteners,Report,FindObject, Conver
                         VistaMenuPrincipal principal = new VistaMenuPrincipal(m);
                         principal.iniciar();
                         exist = true;
+                         LocalUser(p.getId());
                     }
                     
                 }

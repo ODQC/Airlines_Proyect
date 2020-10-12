@@ -8,6 +8,7 @@ package com.progra.una.controlador;
 import com.progra.una.controlador.InterfacesControl.Initlisteners;
 import com.progra.una.modelo.Lugar;
 import com.progra.una.modelo.Persistencia;
+import com.progra.una.modelo.SingletonUsers;
 import com.progra.una.vista.VistaConsultas;
 import com.progra.una.vista.VistaLugares;
 
@@ -18,6 +19,7 @@ import com.progra.una.vista.VistaLugares;
 public class ControladorConsultas implements Initlisteners {
      private Persistencia m;
     private VistaConsultas v;
+    private SingletonUsers sinP;
 
     public ControladorConsultas(Persistencia m, VistaConsultas v) {
         this.m = m;

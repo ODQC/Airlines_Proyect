@@ -13,7 +13,9 @@ import com.progra.una.modelo.Persistencia;
 import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
@@ -52,7 +54,6 @@ public class VistaLugares extends javax.swing.JPanel {
         btnReservar = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        txtListPlaceSelec = new javax.swing.JTextField();
         panelCentral = new javax.swing.JPanel();
         Filas = new javax.swing.JPanel();
         Seccion1 = new javax.swing.JPanel();
@@ -68,8 +69,8 @@ public class VistaLugares extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jPanelLabels1 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPlaces = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(65, 81, 109));
         setMaximumSize(new java.awt.Dimension(900, 700));
@@ -121,18 +122,12 @@ public class VistaLugares extends javax.swing.JPanel {
 
         btnCancelar.setText("Cancelar");
 
-        txtListPlaceSelec.setEditable(false);
-        txtListPlaceSelec.setEnabled(false);
-        txtListPlaceSelec.setMaximumSize(new java.awt.Dimension(14, 24));
-
         javax.swing.GroupLayout PanelInferiorLayout = new javax.swing.GroupLayout(PanelInferior);
         PanelInferior.setLayout(PanelInferiorLayout);
         PanelInferiorLayout.setHorizontalGroup(
             PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInferiorLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(txtListPlaceSelec, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addContainerGap(531, Short.MAX_VALUE)
                 .addComponent(btnCancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,8 +142,7 @@ public class VistaLugares extends javax.swing.JPanel {
                 .addGroup(PanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReservar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar)
-                    .addComponent(txtListPlaceSelec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCancelar))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
@@ -187,126 +181,145 @@ public class VistaLugares extends javax.swing.JPanel {
         jLabel1.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
         jLabel1.setText("Fila A");
+        jLabel1.setMaximumSize(new java.awt.Dimension(43, 16));
+        jLabel1.setMinimumSize(new java.awt.Dimension(43, 16));
+        jLabel1.setPreferredSize(new java.awt.Dimension(43, 16));
+        jLabel1.setSize(new java.awt.Dimension(43, 16));
 
         jLabel2.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel2.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
         jLabel2.setText("Fila B");
-        jLabel2.setMaximumSize(new java.awt.Dimension(35, 16));
-        jLabel2.setMinimumSize(new java.awt.Dimension(35, 16));
-        jLabel2.setPreferredSize(new java.awt.Dimension(35, 16));
+        jLabel2.setMaximumSize(new java.awt.Dimension(43, 16));
+        jLabel2.setMinimumSize(new java.awt.Dimension(43, 16));
+        jLabel2.setPreferredSize(new java.awt.Dimension(43, 16));
+        jLabel2.setSize(new java.awt.Dimension(43, 16));
 
         jLabel3.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel3.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
         jLabel3.setText("Fila C");
+        jLabel3.setMaximumSize(new java.awt.Dimension(43, 16));
+        jLabel3.setMinimumSize(new java.awt.Dimension(43, 16));
+        jLabel3.setPreferredSize(new java.awt.Dimension(43, 16));
+        jLabel3.setSize(new java.awt.Dimension(43, 16));
 
         jLabel4.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel4.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
         jLabel4.setText("Fila D");
-        jLabel4.setMaximumSize(new java.awt.Dimension(35, 16));
-        jLabel4.setMinimumSize(new java.awt.Dimension(35, 16));
-        jLabel4.setPreferredSize(new java.awt.Dimension(35, 16));
+        jLabel4.setMaximumSize(new java.awt.Dimension(43, 16));
+        jLabel4.setMinimumSize(new java.awt.Dimension(43, 16));
+        jLabel4.setPreferredSize(new java.awt.Dimension(43, 16));
+        jLabel4.setSize(new java.awt.Dimension(43, 16));
 
         jLabel5.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel5.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
         jLabel5.setText("Fila E");
-        jLabel5.setMaximumSize(new java.awt.Dimension(35, 16));
-        jLabel5.setMinimumSize(new java.awt.Dimension(35, 16));
-        jLabel5.setPreferredSize(new java.awt.Dimension(35, 16));
+        jLabel5.setMaximumSize(new java.awt.Dimension(43, 16));
+        jLabel5.setMinimumSize(new java.awt.Dimension(43, 16));
+        jLabel5.setPreferredSize(new java.awt.Dimension(43, 16));
+        jLabel5.setSize(new java.awt.Dimension(43, 16));
 
         jLabel6.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel6.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
         jLabel6.setText("Fila F");
-        jLabel6.setMaximumSize(new java.awt.Dimension(35, 16));
-        jLabel6.setMinimumSize(new java.awt.Dimension(35, 16));
-        jLabel6.setPreferredSize(new java.awt.Dimension(35, 16));
+        jLabel6.setMaximumSize(new java.awt.Dimension(43, 16));
+        jLabel6.setMinimumSize(new java.awt.Dimension(43, 16));
+        jLabel6.setPreferredSize(new java.awt.Dimension(43, 16));
+        jLabel6.setSize(new java.awt.Dimension(43, 16));
 
         jLabel7.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel7.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
         jLabel7.setText("Fila G");
+        jLabel7.setMaximumSize(new java.awt.Dimension(43, 16));
+        jLabel7.setMinimumSize(new java.awt.Dimension(43, 16));
+        jLabel7.setPreferredSize(new java.awt.Dimension(43, 16));
+        jLabel7.setSize(new java.awt.Dimension(43, 16));
 
         jLabel8.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel8.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
         jLabel8.setText("Fila H");
-        jLabel8.setMaximumSize(new java.awt.Dimension(35, 16));
-        jLabel8.setMinimumSize(new java.awt.Dimension(35, 16));
-        jLabel8.setPreferredSize(new java.awt.Dimension(35, 16));
+        jLabel8.setMaximumSize(new java.awt.Dimension(43, 16));
+        jLabel8.setMinimumSize(new java.awt.Dimension(43, 16));
+        jLabel8.setPreferredSize(new java.awt.Dimension(43, 16));
+        jLabel8.setSize(new java.awt.Dimension(43, 16));
 
         jLabel9.setBackground(java.awt.SystemColor.activeCaptionText);
         jLabel9.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
         jLabel9.setText("Fila I");
-        jLabel9.setMaximumSize(new java.awt.Dimension(35, 16));
-        jLabel9.setMinimumSize(new java.awt.Dimension(35, 16));
-        jLabel9.setPreferredSize(new java.awt.Dimension(35, 16));
+        jLabel9.setMaximumSize(new java.awt.Dimension(43, 16));
+        jLabel9.setMinimumSize(new java.awt.Dimension(43, 16));
+        jLabel9.setPreferredSize(new java.awt.Dimension(43, 16));
+        jLabel9.setSize(new java.awt.Dimension(43, 16));
+
+        tblPlaces.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "id Lugares"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblPlaces.setMaximumSize(new java.awt.Dimension(75, 0));
+        tblPlaces.setMinimumSize(new java.awt.Dimension(75, 0));
+        jScrollPane1.setViewportView(tblPlaces);
 
         javax.swing.GroupLayout jPanelLabelsLayout = new javax.swing.GroupLayout(jPanelLabels);
         jPanelLabels.setLayout(jPanelLabelsLayout);
         jPanelLabelsLayout.setHorizontalGroup(
             jPanelLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLabelsLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(jPanelLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(84, Short.MAX_VALUE)
+                .addGroup(jPanelLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 4, Short.MAX_VALUE))
+            .addGroup(jPanelLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLabelsLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(60, Short.MAX_VALUE)))
         );
         jPanelLabelsLayout.setVerticalGroup(
             jPanelLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLabelsLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                 .addGap(31, 31, 31)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                 .addGap(37, 37, 37)
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
-        );
-
-        jPanelLabels1.setBackground(java.awt.SystemColor.inactiveCaption);
-        jPanelLabels1.setMaximumSize(new java.awt.Dimension(76, 498));
-        jPanelLabels1.setMinimumSize(new java.awt.Dimension(76, 498));
-
-        jLabel18.setBackground(java.awt.SystemColor.activeCaptionText);
-        jLabel18.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel18.setText("Frente");
-        jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel18.setMaximumSize(new java.awt.Dimension(35, 16));
-        jLabel18.setMinimumSize(new java.awt.Dimension(35, 16));
-        jLabel18.setPreferredSize(new java.awt.Dimension(35, 16));
-
-        javax.swing.GroupLayout jPanelLabels1Layout = new javax.swing.GroupLayout(jPanelLabels1);
-        jPanelLabels1.setLayout(jPanelLabels1Layout);
-        jPanelLabels1Layout.setHorizontalGroup(
-            jPanelLabels1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLabels1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanelLabels1Layout.setVerticalGroup(
-            jPanelLabels1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelLabels1Layout.createSequentialGroup()
-                .addGap(244, 244, 244)
-                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                .addGap(228, 228, 228))
+            .addGroup(jPanelLabelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLabelsLayout.createSequentialGroup()
+                    .addContainerGap(14, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(25, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout FilasLayout = new javax.swing.GroupLayout(Filas);
@@ -316,9 +329,7 @@ public class VistaLugares extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FilasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelLabels, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelLabels1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(35, 35, 35)
                 .addGroup(FilasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Seccion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Seccion2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -337,9 +348,7 @@ public class VistaLugares extends javax.swing.JPanel {
                 .addGap(22, 22, 22))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FilasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(FilasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelLabels, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelLabels1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jPanelLabels, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         panelCentral.add(Filas, java.awt.BorderLayout.CENTER);
@@ -358,7 +367,6 @@ public class VistaLugares extends javax.swing.JPanel {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnReservar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -368,11 +376,11 @@ public class VistaLugares extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanelLabels;
-    private javax.swing.JPanel jPanelLabels1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlTitlePanel;
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelSuperior;
-    private javax.swing.JTextField txtListPlaceSelec;
+    private javax.swing.JTable tblPlaces;
     // End of variables declaration//GEN-END:variables
 
     public ControladorLugar getControlerL() {
@@ -418,10 +426,6 @@ public class VistaLugares extends javax.swing.JPanel {
         return jPanelLabels;
     }
 
-    public JPanel getjPanelLabels1() {
-        return jPanelLabels1;
-    }
-
     public JLabel getJlTitlePanel() {
         return jlTitlePanel;
     }
@@ -442,8 +446,16 @@ public class VistaLugares extends javax.swing.JPanel {
         return c;
     }
 
-    public JTextField getTxtListPlaceSelec() {
-        return txtListPlaceSelec;
+    public JTable getTblPlaces() {
+        return tblPlaces;
     }
+
+  
+
+    public JButton getBtnAtras() {
+        return btnAtras;
+    }
+
+   
 
 }

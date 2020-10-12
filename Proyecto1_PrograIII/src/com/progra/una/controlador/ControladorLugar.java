@@ -8,8 +8,11 @@ package com.progra.una.controlador;
 import com.progra.una.controlador.InterfacesControl.Cancelar;
 import com.progra.una.controlador.InterfacesControl.Initlisteners;
 import com.progra.una.modelo.Aerolinea;
+import com.progra.una.modelo.Interfaces.Identificator;
 import com.progra.una.modelo.Interfaces.Mantenimiento;
 import com.progra.una.modelo.Lugar;
+import com.progra.una.modelo.Reservacion;
+import com.progra.una.modelo.SingletonUsers;
 import com.progra.una.modelo.Vuelo;
 import com.progra.una.vista.PanelBackground;
 import com.progra.una.vista.VistaLugares;
@@ -17,22 +20,30 @@ import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.awt.image.ImageObserver.HEIGHT;
+import static java.awt.image.ImageObserver.WIDTH;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author oscardanielquesadacalderon
  */
-public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners{
+public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners,Identificator{
     private Lugar m;
     private VistaLugares v;
     private PanelBackground background;
-    private int  idflySelected;
+    private Vuelo idflySelected;
     private ArrayList<Lugar> PlaceSelected;
+    private Reservacion Reserv;
+    private SingletonUsers sinP;
+   
     
     public ControladorLugar(Lugar m, VistaLugares v) {
         this.m = m;
@@ -41,14 +52,9 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners{
         this.PlaceSelected = new ArrayList<Lugar>();
         
     }
-      
+     
     public void EndTask(){
     this.Cancel(v.getPanelPrincipal());
-    }
-
-    @Override
-    public void Add() {
-       
     }
 
     @Override
@@ -74,17 +80,22 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners{
         this.v.getBtnReservar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              
-                background = new PanelBackground(v.getPanelPrincipal());
-                v.getPanelPrincipal().add("aerolineaForm", background);
-                CardLayout card = (CardLayout) v.getPanelPrincipal().getLayout();
-                card.next(v.getPanelPrincipal());
+
+                int confirmar;
+                confirmar = JOptionPane.showConfirmDialog(null, "Por favor, confirme su reservación ", "Confirmación de Resevación", WIDTH, HEIGHT);
+
+                if (JOptionPane.YES_NO_OPTION == confirmar) {
+                   Add();
+                }
             }
         });
-        this.v.getBtnReservar().addActionListener(new ActionListener() {
+        this.v.getBtnAtras().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               
+                 v.getPanelPrincipal().remove(v);
+                 CardLayout card = (CardLayout) v.getPanelPrincipal().getLayout();
+                 card.previous(v.getPanelPrincipal());
+
             }
         });
     }
@@ -99,6 +110,9 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners{
     
     public void ShowEnablePlaces(Vuelo fly) {
         int i;
+       
+       
+       
         for (i = 0; i <= 89; i++) {
             String nom;
             try {
@@ -112,6 +126,7 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners{
                 place.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
                         ButtonSelected(place, fly, evt);
+                        ShowPlaces();
                     }
                 });
 
@@ -130,7 +145,7 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners{
                         v.getSeccion3().add(place);
                     }
                 }
-
+ 
             } catch (Exception e) {
                 System.err.println(e);
             }
@@ -145,32 +160,108 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners{
             for (i = 0; i < fly.getListPlace().size(); i++) {
 
                 if (fly.getListPlace().get(i).getIdPlace().equals(B.getText())) {
-                    if (fly.getListPlace().get(i).getStatusPlace().equals("Disponibe")) {
+                    if (fly.getListPlace().get(i).getStatusPlace().equals("Disponible")) {
                         fly.getListPlace().get(i).setStatusPlace("Reservado");
                         B.repaint();
                         B.setBackground(java.awt.Color.RED);
                         PlaceSelected.add(fly.getListPlace().get(i));
-                        v.getTxtListPlaceSelec().setText( PlaceSelected.toString());
+                        
+                        
                         break;
-                    }
-                } else {
+                   }
+               } else {
                   for (int j = 0; j < PlaceSelected.size(); j++) {
                         if (PlaceSelected.get(j).getIdPlace().equals(B.getText())) {
                             PlaceSelected.remove(j);
                             fly.getListPlace().get(i).setStatusPlace("Disponible");
                             B.setBackground(java.awt.Color.GREEN);
-                            v.getTxtListPlaceSelec().setText( PlaceSelected.toString());
-                            break;
+                            
+                            break;                        
                         }
-                    }
+                  }
 
                 }
+           
             }
            
         } catch (Exception e) {
             System.err.println(e);
         }
     }
-  
 
+    public void ShowPlaces() {
+          try {
+              CleanTable();
+        PlaceSelected.forEach(
+              p -> { //se implementa la lamba donde p es el objeto 
+                        DefaultTableModel modelo = (DefaultTableModel) v.getTblPlaces().getModel(); // se crea un modelo para la tabla
+                        Object[] colum = new Object[1];// se asigna un vector con la cantidad de colummas que tiene la tabla
+                        colum[0] = p.getIdPlace(); // se asignan los parametros de los objetos a las columnas
+                        modelo.addRow(colum); // se agregan las columnas(el objeto) a una fila de la tabla 
+                        v.getTblPlaces().setModel(modelo);// se agrega el modelo a la tabla
+                    }
+            );
+
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, ex + " " + "\nNo hay más elementos que mostrar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception ex) {
+
+            System.err.println(ex);
+
+        }
+               
+
+    }
+
+    public void setIdflySelected(Vuelo idflySelected) {
+        this.idflySelected = idflySelected;
+    }
+   
+   
+    @Override
+    public void Add() {
+        try {
+            if (PlaceSelected.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "\nNo hay espacios seleccionados para esta reservación\n ", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                Reservacion newReserv = new Reservacion(this.CodeGenerator(8), "Activo", LocalDateTime.now().toString(), idflySelected.getIdFly(),
+                        idflySelected.getSource(), idflySelected.getDestination(), idflySelected.getTakeOffDate(), idflySelected.getArrivalDate(),
+                        idflySelected.getCapacity(), idflySelected.getStatusFly(), idflySelected.getIdAirline(), idflySelected.getNameAirline());
+
+                PlaceSelected.forEach(
+                        p -> {
+                            newReserv.getPlaceReserv().add(p);
+                        }
+                );
+                 v.getPer().getListaReservaciones().add(newReserv);
+                JOptionPane.showMessageDialog(null, "\nReservación:"
+                        + "Codigo de Reservacion:" + newReserv.getIdreservation() + "\n"
+                        + "Estado de reservacion:" + newReserv.getReservStatus() + "\n"
+                        + "Fecha de Creación:" + newReserv.getReservDate() + "\n"
+                        + "Codigo de Vuelo:" + newReserv.getIdFly() + "\n"
+                        + "Lugar de Origen:" + newReserv.getSource() + "\n"
+                        + "Lugar de Destino:" + newReserv.getDestination() + "\n"
+                        + "Capacidad:" + newReserv.getCapacity() + "\n"
+                        + "Estado:" + newReserv.getStatusFly() + "\n"
+                        + "Fecha de Salida" + newReserv.getTakeOffDate() + "\n"
+                        + "Fecha de llegada:" + newReserv.getArrivalDate() + "\n",
+                        "Detalle de reservación:", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, ex, "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception ex) {
+
+            System.err.println(ex);
+
+        }
+    }
+
+    public void CleanTable() {
+
+        DefaultTableModel modelo = (DefaultTableModel) v.getTblPlaces().getModel(); // se crea un modelo para la tabla
+        Object[] colum = new Object[1];// se asigna un vector con la cantidad de colummas que tiene la tabla
+        colum[0] = null; // se asignan los parametros de los objetos a las columnas
+        modelo.addRow(colum); // se agregan las columnas(el objeto) a una fila de la tabla 
+        v.getTblPlaces().setModel(modelo);
+    }
 }

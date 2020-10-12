@@ -12,6 +12,7 @@ import com.progra.una.modelo.Aerolinea;
 import com.progra.una.modelo.Interfaces.Identificator;
 import com.progra.una.modelo.Interfaces.Mantenimiento;
 import com.progra.una.modelo.Interfaces.Report;
+import com.progra.una.modelo.SingletonUsers;
 import com.progra.una.vista.ConsultasAerolineas;
 import com.progra.una.vista.PanelBackground;
 import com.progra.una.vista.VistaAerolineas;
@@ -33,6 +34,7 @@ public class ControladorAerolinea implements Identificator, Cancelar, Mantenimie
     private ConsultasAerolineas cA;
     private PanelBackground background;
     private  String descripcion1 ;
+    private SingletonUsers sinP;
     
     public ControladorAerolinea(Aerolinea m, VistaAerolineas v) {
         this.m = m;
