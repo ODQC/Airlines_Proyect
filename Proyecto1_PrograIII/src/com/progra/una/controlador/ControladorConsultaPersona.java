@@ -30,6 +30,7 @@ public class ControladorConsultaPersona implements FindObject, Cancelar, Initlis
         this.per = per;
         this.v = v;
         InitListeners();
+        this.sinP=SingletonUsers.getSin();
     }
 
           @Override

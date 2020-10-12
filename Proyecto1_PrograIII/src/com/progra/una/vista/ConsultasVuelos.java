@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author oscardanielquesadacalderon
  */
-public class ConsultasVuelos extends javax.swing.JPanel implements ShowObjects{
+public class ConsultasVuelos extends javax.swing.JPanel implements ShowObjects {
 
     /**
      * Creates new form VistaReportes
@@ -26,14 +26,15 @@ public class ConsultasVuelos extends javax.swing.JPanel implements ShowObjects{
     private JPanel panelPrincipal;
     private Persistencia per;
     private ControladorConsultaVuelo c;
-    public ConsultasVuelos(JPanel panelPrincipal,Persistencia per) {
+
+    public ConsultasVuelos(JPanel panelPrincipal, Persistencia per) {
         this.per = per;
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();
         this.ShowObjects();
-        this.c =new ControladorConsultaVuelo(this,per);
- 
+        this.c = new ControladorConsultaVuelo(this, per);
+
     }
 
     /**
@@ -205,8 +206,8 @@ public class ConsultasVuelos extends javax.swing.JPanel implements ShowObjects{
 
     @Override
     public void ShowObjects() {
-       
-           try {
+
+        try {
             per.getListaVuelos().forEach( // se llama la lista donde estan los objetos
                     p -> { //se implementa la lamba donde p es el objeto 
                         DefaultTableModel modelo = (DefaultTableModel) tblVuelos.getModel(); // se crea un modelo para la tabla
@@ -233,6 +234,11 @@ public class ConsultasVuelos extends javax.swing.JPanel implements ShowObjects{
 
         }
 
+    }
+
+    public void ResetPanel() {
+        this.removeAll();
+        this.initComponents();
     }
 
     public JPanel getPanelPrincipal() {

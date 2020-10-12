@@ -25,11 +25,13 @@ public class ControladorConsultasRegistros implements Initlisteners, Cancelar,Fi
     private ConsultasRegistros v;
     private Persistencia per;
     private SingletonUsers sinP;
+    
 
     public ControladorConsultasRegistros(ConsultasRegistros v, Persistencia per) {
         this.v = v;
         this.per = per;
         this.InitListeners();
+        this.sinP=SingletonUsers.getSin();
     }
 
     @Override

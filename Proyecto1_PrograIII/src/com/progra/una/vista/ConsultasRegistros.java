@@ -35,7 +35,10 @@ public class ConsultasRegistros extends javax.swing.JPanel implements ShowObject
         this.c = new ControladorConsultasRegistros(this,per);
  
     }
-
+public void ResetPanel(){
+    this.removeAll();
+    this.initComponents();
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

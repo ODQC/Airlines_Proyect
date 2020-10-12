@@ -126,5 +126,9 @@ public class TablaVuelos extends javax.swing.JPanel  {
     public JTable getTblVuelos() {
         return tblVuelos;
     }
+    public void ResetPanel() {
+        this.removeAll();
+        this.initComponents();
+    }
 
 }

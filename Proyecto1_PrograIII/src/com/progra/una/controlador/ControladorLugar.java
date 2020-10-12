@@ -10,6 +10,7 @@ import com.progra.una.controlador.InterfacesControl.Initlisteners;
 import com.progra.una.modelo.Aerolinea;
 import com.progra.una.modelo.Interfaces.Identificator;
 import com.progra.una.modelo.Interfaces.Mantenimiento;
+import com.progra.una.modelo.Interfaces.Report;
 import com.progra.una.modelo.Lugar;
 import com.progra.una.modelo.Reservacion;
 import com.progra.una.modelo.SingletonUsers;
@@ -35,7 +36,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author oscardanielquesadacalderon
  */
-public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners,Identificator{
+public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners,Identificator,Report{
     private Lugar m;
     private VistaLugares v;
     private PanelBackground background;
@@ -43,6 +44,7 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners,I
     private ArrayList<Lugar> PlaceSelected;
     private Reservacion Reserv;
     private SingletonUsers sinP;
+    private String descripcion;
    
     
     public ControladorLugar(Lugar m, VistaLugares v) {
@@ -50,6 +52,7 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners,I
         this.v = v;
         this.InitListeners();
         this.PlaceSelected = new ArrayList<Lugar>();
+        this.sinP=SingletonUsers.getSin();
         
     }
      
@@ -132,7 +135,7 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners,I
 
                 if (fly.getListPlace().get(i).getStatusPlace().equals("Reservado")) {
                     place.setBackground(java.awt.Color.RED);
-                    place.setEnabled(false);
+                    
                 } else {
                     if (i <= 29) {
                         place.setBackground(java.awt.Color.ORANGE);
@@ -158,7 +161,8 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners,I
         try {
             int i;
             for (i = 0; i < fly.getListPlace().size(); i++) {
-
+ 
+               
                 if (fly.getListPlace().get(i).getIdPlace().equals(B.getText())) {
                     if (fly.getListPlace().get(i).getStatusPlace().equals("Disponible")) {
                         fly.getListPlace().get(i).setStatusPlace("Reservado");
@@ -169,7 +173,10 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners,I
                         
                         break;
                    }
-               } else {
+               }else if (fly.getListPlace().get(i).getStatusPlace().equals("Reservado")){
+                    JOptionPane.showMessageDialog(null,"Este lugar ya ha sido reservado", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
+               }
+                else {
                   for (int j = 0; j < PlaceSelected.size(); j++) {
                         if (PlaceSelected.get(j).getIdPlace().equals(B.getText())) {
                             PlaceSelected.remove(j);
@@ -230,10 +237,13 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners,I
 
                 PlaceSelected.forEach(
                         p -> {
-                            newReserv.getPlaceReserv().add(p);
+                            if(p.getStatusPlace().equals("Reservado")){
+                            newReserv.getPlaceReserv().add(p);}
                         }
                 );
                  v.getPer().getListaReservaciones().add(newReserv);
+                 descripcion = "Se hizo la resevación " + newReserv.getIdreservation();
+                                this.AddReport(descripcion,sinP.getID(),v.getPer());
                 JOptionPane.showMessageDialog(null, "\nReservación:"
                         + "Codigo de Reservacion:" + newReserv.getIdreservation() + "\n"
                         + "Estado de reservacion:" + newReserv.getReservStatus() + "\n"
@@ -246,6 +256,7 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners,I
                         + "Fecha de Salida" + newReserv.getTakeOffDate() + "\n"
                         + "Fecha de llegada:" + newReserv.getArrivalDate() + "\n",
                         "Detalle de reservación:", JOptionPane.INFORMATION_MESSAGE);
+                        GoHome();
             }
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, ex, "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
@@ -263,5 +274,11 @@ public class ControladorLugar implements Cancelar, Mantenimiento,Initlisteners,I
         colum[0] = null; // se asignan los parametros de los objetos a las columnas
         modelo.addRow(colum); // se agregan las columnas(el objeto) a una fila de la tabla 
         v.getTblPlaces().setModel(modelo);
+    }
+    public void GoHome() {
+        background = new PanelBackground(v.getPanelPrincipal());
+        v.getPanelPrincipal().add("aerolineaForm", background);
+        CardLayout card = (CardLayout) v.getPanelPrincipal().getLayout();
+        card.next(v.getPanelPrincipal());
     }
 }

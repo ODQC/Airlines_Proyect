@@ -40,6 +40,7 @@ public class ControladorAerolinea implements Identificator, Cancelar, Mantenimie
         this.m = m;
         this.v = v;
         this.initListeners();
+        this.sinP =  SingletonUsers.getSin();
 
     }
 
@@ -61,8 +62,8 @@ public class ControladorAerolinea implements Identificator, Cancelar, Mantenimie
         this.v.getBtnCancelar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 EndTask();
+                
             }
         });
         this.v.getBtnGenerarCodigo().addActionListener(new ActionListener() {
@@ -89,7 +90,7 @@ public class ControladorAerolinea implements Identificator, Cancelar, Mantenimie
             m = new Aerolinea(v.getTxtCodigoAerolinea().getText(), v.getTxtNombreAerolinea().getText());
             v.getPer().getListaAerolineas().add(m);
             descripcion1 = "Se creó la Aerolinea " + v.getTxtCodigoAerolinea().getText();
-            this.AddReport(descripcion1,"207460988",v.getPer());
+            this.AddReport(descripcion1,sinP.getID(),v.getPer());
             CleanForms();
             JOptionPane.showMessageDialog(null, "Se ingresó el elemento correctamente", "Transacción exitosa", JOptionPane.WARNING_MESSAGE);
         } catch (Exception e) {
@@ -109,8 +110,9 @@ public class ControladorAerolinea implements Identificator, Cancelar, Mantenimie
             if (v.getPer().getListaAerolineas().get(i).getIdAirline().equals(id)) {
                 v.getPer().getListaAerolineas().remove(i);
                 descripcion1 = "Se Eliminó la Aerolinea "+v.getTxtCodigoAerolinea().getText();
-                this.AddReport(descripcion1,"207460988",v.getPer());
+                this.AddReport(descripcion1,sinP.getID(),v.getPer());
                 JOptionPane.showMessageDialog(null, "Se eliminó elemento correctamente", "Transacción erronea", JOptionPane.WARNING_MESSAGE);
+                cA.ResetPanel();
                 cA.getC().ShowObjects();
                 break;
             }
@@ -136,7 +138,7 @@ public class ControladorAerolinea implements Identificator, Cancelar, Mantenimie
                 String  nombre = JOptionPane.showInputDialog("Ingrese el nuevo nombre Aerolinea:");
                 p.setNameAirline(nombre);
                 descripcion1 = "Se Modificó la Aerolinea "+v.getTxtCodigoAerolinea().getText();
-                this.AddReport(descripcion1,"207460988",v.getPer());
+                this.AddReport(descripcion1,sinP.getID(),v.getPer());
                 JOptionPane.showMessageDialog(null, "El elemento se modificó correctamente" + "\n", "Transacción exitosa", JOptionPane.WARNING_MESSAGE);
                 
             } 

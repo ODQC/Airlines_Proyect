@@ -36,7 +36,10 @@ public class ConsultasAerolineas extends javax.swing.JPanel  {
         c.ShowObjects();
  
     }
-
+public void ResetPanel(){
+    this.removeAll();
+    this.initComponents();
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

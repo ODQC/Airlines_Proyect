@@ -39,9 +39,10 @@ private Persona m;
 private VistaPersona v;
 private String descripcion;
 private ConsultasPersonas cP;
-private SingletonUsers sinP;
+ private SingletonUsers sinP;
 
     public ControladorPersona(Persona m, VistaPersona v) {
+        this.sinP=SingletonUsers.getSin();
         this.m = m;
         this.v = v;
         InitListeners();
@@ -55,7 +56,7 @@ private SingletonUsers sinP;
         m = new Persona(v.getTxtId().getText(),v.getTxtNombre().getText(),v.getTxtApellido1().getText(),v.getTxtApellido2().getText(),v.getTipoTexto(),Convertir(v.getPwdContra1()));
         v.getPer().getListaPersonas().add(m);
         descripcion = "Se ha creado la persona " + v.getTxtId().getText();
-        this.AddReport(descripcion,"207460988", v.getPer());
+        this.AddReport(descripcion,sinP.getID(), v.getPer());
         CleanForms();
         JOptionPane.showMessageDialog(null, descripcion, "Transaccion Exitosa!!", JOptionPane.WARNING_MESSAGE);
         }else{
@@ -87,9 +88,10 @@ private SingletonUsers sinP;
                     if (v.getPer().getListaPersonas().get(i).getId().equals(id)) {
                         v.getPer().getListaPersonas().remove(i);
                         descripcion = "Se Eliminó la Persona " + v.getTxtId().getText();
-                        this.AddReport(descripcion, "207460988", v.getPer());
+                        this.AddReport(descripcion, sinP.getID(), v.getPer());
                         JOptionPane.showMessageDialog(null, "Se eliminó la persona correctamente", "Transacción erronea", JOptionPane.WARNING_MESSAGE);
-                       
+                       cP.ResetPanel();
+                       cP.ShowObjects();
                         break;
                     }
                 }

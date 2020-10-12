@@ -37,6 +37,7 @@ public class LoginControlador implements Initlisteners,Report,FindObject, Conver
  private Persistencia m;
  private Boolean exist;
  private SingletonUsers sinP;
+ private String  descripcion;
  
     
 
@@ -56,6 +57,7 @@ public class LoginControlador implements Initlisteners,Report,FindObject, Conver
             @Override
             public void actionPerformed(ActionEvent e) {
              Find();
+             
             }
         });
          this.v.getJbtnCancelar().addActionListener(new ActionListener() {
@@ -80,23 +82,27 @@ public class LoginControlador implements Initlisteners,Report,FindObject, Conver
     public void Find() {
         try {
            exist = false;
-            v.getM().getListaPersonas().forEach(new Consumer<Persona>() {
-                @Override
-                public void accept(Persona p) {
+            v.getM().getListaPersonas().forEach(
+                p->{
+           
                     if (v.getJtxtCedula().getText().equals(p.getId()) && Convertir(v.getjPwdContraseña()).equals(p.getPassword()) && v.getJcboUser().getSelectedItem().equals(p.getTipo())) {
                         LoginControlador.this.v.setVisible(false);
                         VistaMenuPrincipal principal = new VistaMenuPrincipal(m);
                         principal.iniciar();
                         exist = true;
                          LocalUser(p.getId());
+                        
                     }
                     
                 }
-            });
+            );
             if(!exist){
                 JOptionPane.showMessageDialog(null, "\nEl usuario no fué encontrado verifique que los\n "
                         + "datos se ingresaron correctamente ", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
-            }
+            }else{
+            
+              descripcion = "Inicio Session el usuario " +this.sinP.getID();
+            this.AddReport(descripcion,sinP.getID(),v.getM());}
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, ex + " " + "\nDebe de llenar todos los campos", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {

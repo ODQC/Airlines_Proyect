@@ -41,6 +41,7 @@ public class ControladorVuelo implements Identificator, Cancelar, Mantenimiento,
         this.m = m;
         this.v = v;
         this.InitListeners();
+        this.sinP=SingletonUsers.getSin();
     }
 
     public void Code() {
@@ -62,7 +63,7 @@ public class ControladorVuelo implements Identificator, Cancelar, Mantenimiento,
             v.getPer().getListaVuelos().add(m);
             descripcion1 = "Se creó el vuelo " + v.getTxtidFly().getText();
             CleanForms();
-            this.AddReport(descripcion1,"207460988",v.getPer());
+            this.AddReport(descripcion1,sinP.getID(),v.getPer());
             JOptionPane.showMessageDialog(null, "Se ingresó el elemento correctamente", "Transacción exitosa", JOptionPane.WARNING_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e + " " + "\nNo se pudo agregar el elemento", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);
@@ -81,7 +82,7 @@ public class ControladorVuelo implements Identificator, Cancelar, Mantenimiento,
                     if (v.getPer().getListaVuelos().get(i).getIdFly().equals(id)) {
                         v.getPer().getListaVuelos().remove(i);
                         descripcion1 = "Se Eliminó el vuelo " + v.getPer().getListaVuelos().get(i).getIdFly();
-                        this.AddReport(descripcion1,"207460988",v.getPer());
+                        this.AddReport(descripcion1,sinP.getID(),v.getPer());
                         JOptionPane.showMessageDialog(null, "Se eliminó elemento correctamente", "Transacción erronea", JOptionPane.WARNING_MESSAGE);
                         break;
                     }
@@ -142,7 +143,7 @@ public class ControladorVuelo implements Identificator, Cancelar, Mantenimiento,
                                 p.setTakeOffDate(v.getJbTakeOff().getText());
                                 p.setArrivalDate(v.getJdcArrive().getText());
                                 descripcion1 = "Se Modificó el vuelo " + v.getTxtidFly().getText();
-                                this.AddReport(descripcion1,"207460988",v.getPer());
+                                this.AddReport(descripcion1,sinP.getID(),v.getPer());
                                 JOptionPane.showMessageDialog(null, "El elemento se modificó correctamente" + "\n", "Transacción exitosa", JOptionPane.WARNING_MESSAGE);
                                 CleanForms();
                                 v.getBtnGenerarCodigo().setVisible(true);

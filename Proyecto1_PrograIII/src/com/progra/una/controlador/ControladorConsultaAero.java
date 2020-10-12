@@ -31,6 +31,7 @@ public class ControladorConsultaAero implements FindObject,Cancelar, Initlistene
         this.v = v;
         this.per = per;
         this.InitListeners();
+        this.sinP=SingletonUsers.getSin();
     }
    
       @Override

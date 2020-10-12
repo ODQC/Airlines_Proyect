@@ -7,6 +7,7 @@ package com.progra.una.controlador;
 
 import com.progra.una.controlador.InterfacesControl.Cancelar;
 import com.progra.una.controlador.InterfacesControl.Initlisteners;
+import com.progra.una.controlador.InterfacesControl.ResetPanel;
 import com.progra.una.modelo.Interfaces.FindObject;
 import com.progra.una.modelo.Interfaces.Report;
 import com.progra.una.modelo.Interfaces.ShowObjects;
@@ -17,6 +18,7 @@ import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -32,6 +34,7 @@ public class ControladorConsultaReservacion implements Initlisteners,Cancelar,Fi
         this.v = v;
         this.per = per;
         this.InitListeners();
+        this.sinP=SingletonUsers.getSin();
         
     }
 
@@ -96,19 +99,19 @@ public class ControladorConsultaReservacion implements Initlisteners,Cancelar,Fi
             per.getListaReservaciones().forEach( // se llama la lista donde estan los objetos
                     p -> { //se implementa la lamba donde p es el objeto 
                         DefaultTableModel modelo = (DefaultTableModel) v.getTblReserv().getModel(); // se crea un modelo para la tabla
-                        Object[] colum = new Object[13];// se asigna un vector con la cantidad de colummas que tiene la tabla
+                        Object[] colum = new Object[12];// se asigna un vector con la cantidad de colummas que tiene la tabla
                         colum[0] = p.getIdreservation();// se asignan los parametros de los objetos a las columnas
                         colum[1] =  p.getReservStatus();
                         colum[2] = p.getReservDate();
                         colum[3] =  p.getIdFly();
-                        colum[5] = p.getSource();
-                        colum[6] = p.getDestination();
-                        colum[7] = p.getCapacity();
-                        colum[8] = p.getStatusFly() ;
-                        colum[9]= p.getIdAirline();
-                        colum[10]= p.getNameAirline(); 
-                        colum[11] = p.getTakeOffDate() ;
-                        colum[12] =p.getArrivalDate();
+                        colum[4] = p.getSource();
+                        colum[5] = p.getDestination();
+                        colum[6] = p.getCapacity();
+                        colum[7] = p.getStatusFly() ;
+                        colum[8]= p.getIdAirline();
+                        colum[9]= p.getNameAirline(); 
+                        colum[10] = p.getTakeOffDate() ;
+                        colum[11] =p.getArrivalDate();
                         
                         modelo.addRow(colum); // se agregan las columnas(el objeto) a una fila de la tabla 
                         v.getTblReserv().setModel(modelo);// se agrega el modelo a la tabla
@@ -123,4 +126,6 @@ public class ControladorConsultaReservacion implements Initlisteners,Cancelar,Fi
 
         }
     }
+
+    
 }

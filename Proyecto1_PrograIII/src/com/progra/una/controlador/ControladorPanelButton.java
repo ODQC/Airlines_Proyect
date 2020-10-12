@@ -40,14 +40,53 @@ public class ControladorPanelButton implements Initlisteners{
     private SingletonUsers sinP;
 
     public ControladorPanelButton(JPanelButtonsAdmin v,Persistencia per,JPanel p) {
+         this.sinP=SingletonUsers.getSin();
         this.v = v;
         this.InitListeners();
         this.principal =  p;
         this.per = per;
         this.curPanel = "Background";
+        this.Privilegios();
     }
    
-  
+    public void Privilegios() {
+        per.getListaPersonas().forEach(
+                p -> {
+                    if (p.getTipo().equals("Administrador de TI")) {
+                        v.getBtnAdminAerolinea().setVisible(true);
+                        v.getBtnAdminReserv().setVisible(true);
+                        v.getBtnAdminUser().setVisible(true);
+                        v.getBtnAdminReserv().setVisible(true);
+                        v.getBtnAdminVuelos().setVisible(true);
+                        v.getBtnRegistro().setVisible(true);
+
+                    } else if (p.getTipo().equals("Administrador de Aerolineas")) {
+                        v.getBtnAdminAerolinea().setVisible(true);
+                        v.getBtnAdminReserv().setVisible(false);
+                        v.getBtnAdminUser().setVisible(false);
+                        v.getBtnAdminReserv().setVisible(true);
+                        v.getBtnAdminVuelos().setVisible(true);
+                        v.getBtnRegistro().setVisible(false);
+
+                    } else if (p.getTipo().equals("Administrador de Reservaciones")) {
+                        v.getBtnAdminAerolinea().setVisible(true);
+                        v.getBtnAdminReserv().setVisible(true);
+                        v.getBtnAdminUser().setVisible(false);
+                        v.getBtnAdminReserv().setVisible(true);
+                        v.getBtnAdminVuelos().setVisible(true);
+                        v.getBtnRegistro().setVisible(false);
+                    } else if (p.getTipo().equals("Administrador de Usuarios")) {
+                        v.getBtnAdminAerolinea().setVisible(false);
+                        v.getBtnAdminReserv().setVisible(false);
+                        v.getBtnAdminUser().setVisible(false);
+                        v.getBtnAdminReserv().setVisible(true);
+                        v.getBtnAdminVuelos().setVisible(true);
+                        v.getBtnRegistro().setVisible(true);
+                    }
+
+                }
+        );
+    }
 
     @Override
     public void InitListeners() {
@@ -133,7 +172,7 @@ public class ControladorPanelButton implements Initlisteners{
             public void actionPerformed(ActionEvent e) {
               if(curPanel.equals("AdminAerolineas")){vA.getControlerA().Add();}
               else if(curPanel.equals("AdminVuelos")){vV.getControlerV().Add();}
-              //else if(curPanel.equals("ConReservaciones")){vR.getControlerR().Add();}
+              else if(curPanel.equals("ConReservaciones")){JOptionPane.showMessageDialog(null, "\nsolo en el Panel de lugares se debe hacer las reservaciones", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);}
              
               else if(curPanel.equals("AdminUser")){vP.getControlerP().Add();}
               else if(curPanel.equals("Background")){JOptionPane.showMessageDialog(null, "\nPrimero seleccione el serivicio que quiere modificar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);}
@@ -155,7 +194,7 @@ public class ControladorPanelButton implements Initlisteners{
             public void actionPerformed(ActionEvent e) {
                if(curPanel.equals("AdminAerolineas")){vA.getControlerA().Delete();}
               else if(curPanel.equals("AdminVuelos")){vV.getControlerV().Delete();}
-              //else if(curPanel.equals("ConReservaciones")){vR.getControlerR().Delete();}
+              else if(curPanel.equals("ConReservaciones")){JOptionPane.showMessageDialog(null, "\nLas Resevaciones no se deben eliminar solo cancelar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);}
               else if(curPanel.equals("AdminReserv")){vR.getControlerR();}
                else if(curPanel.equals("AdminUser")){vP.getControlerP().Delete();}
               else if(curPanel.equals("Background")){JOptionPane.showMessageDialog(null, "\nPrimero seleccione el serivicio que quiere modificar", "ADVERTENCIA!!", JOptionPane.WARNING_MESSAGE);}

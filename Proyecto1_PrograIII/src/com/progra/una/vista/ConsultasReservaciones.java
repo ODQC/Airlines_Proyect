@@ -212,5 +212,8 @@ public class ConsultasReservaciones extends javax.swing.JPanel {
     public JTable getTblReserv() {
         return tblReserv;
     }
-
+public void ResetPanel(){
+    this.removeAll();
+    this.initComponents();
+}
 }

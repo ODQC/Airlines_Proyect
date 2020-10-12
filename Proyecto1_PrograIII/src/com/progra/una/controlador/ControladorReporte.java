@@ -17,11 +17,12 @@ import com.progra.una.vista.VistaReportes;
 public class ControladorReporte implements Initlisteners{
     private Reporte m;
     private VistaReportes v;
-    private SingletonUsers sinP;
+     private SingletonUsers sinP;
 
     public ControladorReporte(Reporte m, VistaReportes v) {
         this.m = m;
         this.v = v;
+        this.sinP=SingletonUsers.getSin();
     }
 
     @Override

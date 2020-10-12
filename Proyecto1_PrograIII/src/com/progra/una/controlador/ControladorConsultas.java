@@ -24,6 +24,7 @@ public class ControladorConsultas implements Initlisteners {
     public ControladorConsultas(Persistencia m, VistaConsultas v) {
         this.m = m;
         this.v = v;
+        this.sinP=SingletonUsers.getSin();
     }
 
     @Override

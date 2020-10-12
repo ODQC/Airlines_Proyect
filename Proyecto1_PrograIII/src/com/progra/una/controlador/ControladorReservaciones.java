@@ -32,12 +32,13 @@ public class ControladorReservaciones implements Cancelar, Report, Initlisteners
     private VistaReservaciones v;
     private VistaLugares vL;
     private PanelBackground background;
-    private SingletonUsers sinP;
+     private SingletonUsers sinP;
    
     public ControladorReservaciones(Reservacion m, VistaReservaciones r) {
         this.m = m;
         this.v = r;
         this.InitListeners();
+        this.sinP=SingletonUsers.getSin();
     }
 
     public void EndTask() {
@@ -47,7 +48,8 @@ public class ControladorReservaciones implements Cancelar, Report, Initlisteners
     
     public void LoadFlies() {
         try {
-            
+           
+            v.gettVuelos().ResetPanel();
             v.getPer().getListaVuelos().forEach( // se llama la lista donde estan los objetos
                     p -> { //se implementa la lamba donde p es el objeto 
                         DefaultTableModel modelo = (DefaultTableModel) v.gettVuelos().getTblVuelos().getModel(); // se crea un modelo para la tabla
