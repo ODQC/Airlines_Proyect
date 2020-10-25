@@ -8,6 +8,7 @@ package com.progra.una.vista;
 import com.progra.una.controlador.ControladorConsultasRegistros;
 import com.progra.una.modelo.Interfaces.ShowObjects;
 import com.progra.una.modelo.Persistencia;
+import com.progra.una.modelo.SingletonPanel;
 import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -26,13 +27,17 @@ public class ConsultasRegistros extends javax.swing.JPanel implements ShowObject
     private JPanel panelPrincipal;
     private Persistencia per;
     private ControladorConsultasRegistros c;
+    private SingletonPanel sinPan; 
+
     public ConsultasRegistros(JPanel panelPrincipal,Persistencia per) {
+        this.sinPan = SingletonPanel.getSin();
         this.per = per;
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();
         this.ShowObjects();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
         this.c = new ControladorConsultasRegistros(this,per);
+        this.sinPan.setID("ConsultaRegistros");
  
     }
 public void ResetPanel(){

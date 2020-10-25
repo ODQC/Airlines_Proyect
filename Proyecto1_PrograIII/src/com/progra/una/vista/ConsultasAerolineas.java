@@ -8,6 +8,7 @@ package com.progra.una.vista;
 import com.progra.una.controlador.ControladorConsultaAero;
 import com.progra.una.modelo.Interfaces.ShowObjects;
 import com.progra.una.modelo.Persistencia;
+import com.progra.una.modelo.SingletonPanel;
 import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -27,13 +28,17 @@ public class ConsultasAerolineas extends javax.swing.JPanel  {
     private JPanel panelPrincipal;
     private Persistencia per;
     private ControladorConsultaAero c;
+    private SingletonPanel sinPan; 
+
     public ConsultasAerolineas(JPanel panelPrincipal,Persistencia per) {
+        this.sinPan = SingletonPanel.getSin();
         this.per =per; 
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();
         this.c = new ControladorConsultaAero(this,per);
         c.ShowObjects();
+        this.sinPan.setID("ConsultaAerolineas");
  
     }
 public void ResetPanel(){

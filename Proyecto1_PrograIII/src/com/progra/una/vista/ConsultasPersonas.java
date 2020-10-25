@@ -10,6 +10,7 @@ import com.progra.una.controlador.ControladorConsultaPersona;
 import com.progra.una.controlador.ControladorPersona;
 import com.progra.una.modelo.Interfaces.ShowObjects;
 import com.progra.una.modelo.Persistencia;
+import com.progra.una.modelo.SingletonPanel;
 import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -29,13 +30,17 @@ public class ConsultasPersonas extends javax.swing.JPanel implements ShowObjects
     private JPanel panelPrincipal;
     private Persistencia per;
     private ControladorConsultaPersona c;
+    private SingletonPanel sinPan; 
+
     public ConsultasPersonas(JPanel panelPrincipal,Persistencia per) {
+        this.sinPan = SingletonPanel.getSin();
         this.per = per; 
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();
         this.ShowObjects();
         this.c = new ControladorConsultaPersona(per, this);
+        this.sinPan.setID("ConsultaPersonas");
  
     }
 public void ResetPanel(){

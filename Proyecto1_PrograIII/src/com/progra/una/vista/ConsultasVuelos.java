@@ -8,6 +8,7 @@ package com.progra.una.vista;
 import com.progra.una.controlador.ControladorConsultaVuelo;
 import com.progra.una.modelo.Interfaces.ShowObjects;
 import com.progra.una.modelo.Persistencia;
+import com.progra.una.modelo.SingletonPanel;
 import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -26,14 +27,17 @@ public class ConsultasVuelos extends javax.swing.JPanel implements ShowObjects {
     private JPanel panelPrincipal;
     private Persistencia per;
     private ControladorConsultaVuelo c;
+    private SingletonPanel sinPan; 
 
     public ConsultasVuelos(JPanel panelPrincipal, Persistencia per) {
+        this.sinPan = SingletonPanel.getSin();
         this.per = per;
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();
         this.ShowObjects();
         this.c = new ControladorConsultaVuelo(this, per);
+        this.sinPan.setID("ConsultaVuelos");
 
     }
 

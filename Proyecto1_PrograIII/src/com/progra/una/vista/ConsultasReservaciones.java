@@ -7,6 +7,7 @@ package com.progra.una.vista;
 
 import com.progra.una.controlador.ControladorConsultaReservacion;
 import com.progra.una.modelo.Persistencia;
+import com.progra.una.modelo.SingletonPanel;
 import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -24,13 +25,17 @@ public class ConsultasReservaciones extends javax.swing.JPanel {
     private JPanel panelPrincipal;
     private Persistencia per;
     private ControladorConsultaReservacion c;
+    private SingletonPanel sinPan; 
+
     public ConsultasReservaciones(JPanel panelPrincipal,Persistencia per) {
+        this.sinPan = SingletonPanel.getSin();
         this.per =per;
         this.panelPrincipal = panelPrincipal;
         this.setLayout(new CardLayout());
         initComponents();
         this.c = new ControladorConsultaReservacion(this,per);
         c.ShowObjects();
+        this.sinPan.setID("ConsultasReservaciones");
  
     }
 
